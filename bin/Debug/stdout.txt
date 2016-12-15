@@ -1,1 +1,2 @@
-test
+OpenGL Version : 4.3.0 - Build 10.18.15.4256
+GLEW Version : 2.0.0

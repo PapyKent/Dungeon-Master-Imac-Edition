@@ -8,7 +8,7 @@
 
 #include "monster.h"
 #include "treasure.h"
-
+#include "Map.h"
 
 
 class GameManager {
@@ -20,7 +20,10 @@ private:
     std::string ppmFile;
     std::string gameName;
 
+
+
 public:
+    Map map;
     GameManager();
 
     void addMonster(Monster m);
@@ -42,6 +45,9 @@ public:
     std::string getGameName();
 
     void setGameName(const std::string &gameName);
+
+    Map getMap();
+    void setMap(Map &map);
 
 };
 

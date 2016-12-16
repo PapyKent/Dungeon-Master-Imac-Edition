@@ -5,12 +5,13 @@
 #include "../include/MapLoader.h"
 
 
-void MapLoader::loadMap(){
+
+void MapLoader::loadMap(GameManager &gm){
 
     //FILE * ppmFile;
     //ppmFile = fopen("../../assets//ppm/lab.ppm", "r");
 
-    fstream ppmFile("../../assets//ppm/lab.ppm", ios::in);
+    fstream ppmFile(gm.getPpmFile().c_str(), ios::in);
 
     //if(ppmFile != NULL){
 
@@ -37,6 +38,9 @@ void MapLoader::loadMap(){
         getline(ppmFile, borne);
         cout << borne << endl;
 
+
+
+
         int mat[colonnesI*lignesI*3];
 
         for(int i = 0; i < colonnesI*lignesI*3 ; i++){
@@ -48,6 +52,11 @@ void MapLoader::loadMap(){
         int r, g, b;
         int map[colonnesI][lignesI];
 
+        //La bonne structure
+        gm.map = Map(colonnesI,lignesI);
+
+         int cpt = 0;
+
         for(int i = 0; i < colonnesI*lignesI*3 ; i+=3){
 
             r = mat[i];
@@ -57,29 +66,43 @@ void MapLoader::loadMap(){
             if(r == 184 && g == 20 && b == 20){
                 //cout << "Start" << endl;
                 map[(i/3)%colonnesI][(i/3)/lignesI] = 1;
+                gm.map.setCase((i/3)%colonnesI,(i/3)/lignesI,1);
+                cpt++;
             }
             if(r == 66 && g == 198 && b == 59){
                 //cout << "End" << endl;
                 map[(i/3)%colonnesI][(i/3)/lignesI] = 2;
+                gm.map.setCase((i/3)%colonnesI,(i/3)/lignesI,2);
+                cpt++;
             }
             if(r == 0 && g == 0 && b == 0){
                 //cout << "Wall" << endl;
                 map[(i/3)%colonnesI][(i/3)/lignesI] = 3;
+                gm.map.setCase((i/3)%colonnesI,(i/3)/lignesI,3);
+                cpt++;
             }
             if(r == 255 && g == 255 && b == 255){
                 //cout << "Corridor" << endl;
                 map[(i/3)%colonnesI][(i/3)/lignesI] = 4;
+                gm.map.setCase((i/3)%colonnesI,(i/3)/lignesI,4);
+                cpt++;
             }
 
             cout << map[(i/3)%colonnesI][(i/3)/lignesI] << endl ;
         }
+        //gm.setMap(goodMap);
+
+        int d = 0;
 
 
 
         for(int i = 0; i < colonnesI; i++){
             for(int j = 0 ; j < lignesI; j++){
-
+               int k =  map[i][j] ;
+               int k2 = gm.map.getCase(i,j);
+                cout << k << ":" << k2 << " ";
             }
+            cout << endl;
         }
 
     }

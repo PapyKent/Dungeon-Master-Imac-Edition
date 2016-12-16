@@ -10,12 +10,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "GameManager.h"
 
 using namespace std;
 
 class MapLoader {
 public :
-    static void loadMap();
+    static void loadMap(GameManager &gm);
 
 };
 

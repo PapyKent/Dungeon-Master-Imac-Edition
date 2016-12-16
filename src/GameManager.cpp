@@ -2,6 +2,7 @@
 // Created by Quentin on 14/12/2016.
 //
 
+#include <iostream>
 #include "../include/GameManager.h"
 
 GameManager::GameManager() {
@@ -91,3 +92,7 @@ bool GameManager::findEquipment(int id, Equipment& e) {
     }
     return false;
 }
+
+
+
+

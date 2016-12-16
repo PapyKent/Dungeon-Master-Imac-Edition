@@ -1,6 +1,6 @@
 <game>
     <gameName>Dungeon Master Imac Edition</gameName>
-    <ppm>test.ppm</ppm>
+    <ppm>../../assets//ppm/lab.ppm</ppm>
 
     <monster>
         <id>1</id>

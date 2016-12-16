@@ -93,6 +93,21 @@ bool GameManager::findEquipment(int id, Equipment& e) {
     return false;
 }
 
+void GameManager::eventManager(SDL_Event &e) {
+    if (e.type == SDL_QUIT) {
+        this->statut = true;
+    }
+
+}
+
+bool GameManager::getStatut() const {
+    return statut;
+}
+
+void GameManager::setStatut(bool s) {
+    this->statut = s;
+}
+
 
 
 

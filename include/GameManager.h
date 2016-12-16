@@ -5,6 +5,7 @@
 #ifndef IMACGL_GAMEMANAGER_H
 #define IMACGL_GAMEMANAGER_H
 #include <vector>
+#include <SDL/SDL.h>
 
 #include "monster.h"
 #include "treasure.h"
@@ -19,6 +20,10 @@ private:
 
     std::string ppmFile;
     std::string gameName;
+    bool statut;
+
+
+
 public:
     Map *map;
     GameManager();
@@ -43,8 +48,12 @@ public:
 
     void setGameName(const std::string &gameName);
 
-    Map getMap();
-    void setMap(Map &map);
+
+    void eventManager(SDL_Event &e);
+
+    bool getStatut() const;
+
+    void setStatut(bool jeu);
 
 };
 

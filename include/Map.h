@@ -24,11 +24,9 @@ public:
     void setCase(int i,int j,int value);
 
     int getLines() const;
-
     void setLines(int lines);
 
     int getColumns() const;
-
     void setColumns(int columns);
 
 

@@ -19,11 +19,8 @@ private:
 
     std::string ppmFile;
     std::string gameName;
-
-
-
 public:
-    Map map;
+    Map *map;
     GameManager();
 
     void addMonster(Monster m);

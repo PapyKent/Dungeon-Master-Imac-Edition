@@ -53,7 +53,7 @@ void MapLoader::loadMap(GameManager &gm){
         int map[colonnesI][lignesI];
 
         //La bonne structure
-        gm.map = Map(colonnesI,lignesI);
+        gm.map = new Map(colonnesI,lignesI);
 
          int cpt = 0;
 
@@ -66,25 +66,25 @@ void MapLoader::loadMap(GameManager &gm){
             if(r == 184 && g == 20 && b == 20){
                 //cout << "Start" << endl;
                 map[(i/3)%colonnesI][(i/3)/lignesI] = 1;
-                gm.map.setCase((i/3)%colonnesI,(i/3)/lignesI,1);
+                gm.map->setCase((i/3)%colonnesI,(i/3)/lignesI,1);
                 cpt++;
             }
             if(r == 66 && g == 198 && b == 59){
                 //cout << "End" << endl;
                 map[(i/3)%colonnesI][(i/3)/lignesI] = 2;
-                gm.map.setCase((i/3)%colonnesI,(i/3)/lignesI,2);
+                gm.map->setCase((i/3)%colonnesI,(i/3)/lignesI,2);
                 cpt++;
             }
             if(r == 0 && g == 0 && b == 0){
                 //cout << "Wall" << endl;
                 map[(i/3)%colonnesI][(i/3)/lignesI] = 3;
-                gm.map.setCase((i/3)%colonnesI,(i/3)/lignesI,3);
+                gm.map->setCase((i/3)%colonnesI,(i/3)/lignesI,3);
                 cpt++;
             }
             if(r == 255 && g == 255 && b == 255){
                 //cout << "Corridor" << endl;
                 map[(i/3)%colonnesI][(i/3)/lignesI] = 4;
-                gm.map.setCase((i/3)%colonnesI,(i/3)/lignesI,4);
+                gm.map->setCase((i/3)%colonnesI,(i/3)/lignesI,4);
                 cpt++;
             }
 
@@ -99,7 +99,7 @@ void MapLoader::loadMap(GameManager &gm){
         for(int i = 0; i < colonnesI; i++){
             for(int j = 0 ; j < lignesI; j++){
                int k =  map[i][j] ;
-               int k2 = gm.map.getCase(i,j);
+               int k2 = gm.map->getCase(i,j);
                 cout << k << ":" << k2 << " ";
             }
             cout << endl;

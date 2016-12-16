@@ -1,0 +1,86 @@
+<game>
+    <gameName>Dungeon Master Imac Edition</gameName>
+    <ppm>test.ppm</ppm>
+
+    <monster>
+        <id>1</id>
+        <name>Orc</name>
+        <description>Un orc velu.</description>
+        <posX>0</posX>
+        <posY>0</posY>
+        <posZ>0</posZ>
+
+        <atk>10</atk>
+        <def>5</def>
+        <life>3</life>
+        <type>Orc</type>
+
+        <weakness>Fire</weakness>
+        <resistance>Physical</resistance>
+
+        <model>orc.obj</model>
+    </monster>
+
+    <monster>
+        <id>2</id>
+        <name>Orc2</name>
+        <description>Un 2e orc velu.</description>
+        <posX>1</posX>
+        <posY>0</posY>
+        <posZ>0</posZ>
+
+        <atk>10</atk>
+        <def>5</def>
+        <life>3</life>
+        <type>Orc</type>
+
+        <weakness>Magical</weakness>
+        <resistance>Physical</resistance>
+
+        <model>orc.obj</model>
+    </monster>
+    <equipment>
+        <id>1</id>
+        <name>Wooden Sword</name>
+        <description>Elle a l'air fragile..</description>
+        <atk>10</atk>
+        <def>0</def>
+        <type>Physical</type>
+        <model>woodenSword.obj</model>
+    </equipment>
+
+    <equipment>
+        <id>2</id>
+        <name>Master Sword</name>
+        <description>Wow.</description>
+        <atk>20</atk>
+        <def>5</def>
+        <type>Magical</type>
+        <model>woodenSword.obj</model>
+    </equipment>
+
+
+    <treasure>
+        <id>1</id>
+        <description>Un vieux coffre en bois.</description>
+        <posX>2</posX>
+        <posY>1</posY>
+        <posZ>0</posZ>
+        <gold>500</gold>
+        <model>woodTreasure.obj</model>
+        <idReward>1</idReward>
+    </treasure>
+
+    <treasure>
+        <id>2</id>
+        <description>Un coffre en or.</description>
+        <posX>6</posX>
+        <posY>1</posY>
+        <posZ>0</posZ>
+        <gold>0</gold>
+        <model>goldTreasure.obj</model>
+        <idReward>2</idReward>
+    </treasure>
+
+</game>
+

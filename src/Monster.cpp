@@ -17,27 +17,27 @@ void Monster::moveTo(glm::vec3 position) {
 
 }
 
-std::map<std::string, std::string> Monster::getWeaknesses(){
-    return weaknesses;
+std::string Monster::getWeakness(){
+    return weakness;
 }
 
-void Monster::setWeaknesses(const std::map<std::string, std::string> &weaknesses) {
-    this->weaknesses = weaknesses;
+void Monster::setWeakness(const std::string &weakness) {
+    this->weakness = weakness;
 }
 
-std::map<std::string, std::string> Monster::getResistances(){
-    return resistances;
+std::string Monster::getResistance(){
+    return resistance;
 }
 
-void Monster::setResistances(const std::map<std::string, std::string> &resistances) {
-    this->resistances = resistances;
+void Monster::setResistance(std::string resistances) {
+    this->resistance = resistance;
 }
 
 std::string Monster::getType(){
     return type;
 }
 
-void Monster::setType(const std::string &type) {
+void Monster::setType(const std::string type) {
     this->type = type;
 }
 

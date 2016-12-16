@@ -13,6 +13,21 @@ Treasure::Treasure(int id, const std::string &name, const glm::vec3 &position, c
 
 }
 
-void Treasure::moveTo(glm::vec3 position) {
-
+int Treasure::getGold() {
+    return gold;
 }
+
+void Treasure::setGold(int gold) {
+    this->gold = gold;
+}
+
+Equipment Treasure::getReward() {
+    return this->reward;
+}
+
+void Treasure::setReward(Equipment reward) {
+    this->reward = reward;
+}
+
+
+

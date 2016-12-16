@@ -15,11 +15,18 @@ class Treasure : public Entity {
 private:
     Equipment reward;
     int gold;
-    //modele 3D
+
 public:
     Treasure();
     Treasure(int id, const std::string &name, const glm::vec3 &position, const std::string &description);
-    void moveTo(glm::vec3 position);
+
+    int getGold();
+    void setGold(int gold);
+
+    Equipment getReward();
+    void setReward(Equipment reward);
+
+    
 
 };
 

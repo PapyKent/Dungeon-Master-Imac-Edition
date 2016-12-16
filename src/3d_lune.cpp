@@ -13,15 +13,23 @@
 #include <glimac/Sphere.hpp>
 #include <glimac/glm.hpp>
 #include <glimac/Image.hpp>
+#include "../include/GameManager.h"
+#include "../include/EntityLoader.h"
 
 using namespace glimac;
 
 int main(int argc, char **argv) {
 
+    GameManager gm;
+
+    EntityLoader::loadEntities(gm,"../../files/xml/game.xml");
+
+
+
     // Initialize SDL and open a window
     float largeur = 800;
     float hauteur = 800;
-    SDLWindowManager windowManager(largeur, hauteur, "GLImac");
+    SDLWindowManager windowManager(largeur, hauteur, gm.getGameName().c_str());
 
     // Initialize glew for OpenGL3+ support
     GLenum glewInitError = glewInit();

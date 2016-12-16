@@ -14,8 +14,8 @@
 
 class Monster : public Entity{
 private:
-    std::map<std::string,std::string> weaknesses;
-    std::map<std::string,std::string> resistances;
+    std::string weakness;
+    std::string resistance;
     std::string type;
     int atk;
     int def;
@@ -28,17 +28,17 @@ public:
     Monster(int id, const std::string &name, const glm::vec3 &position, const std::string &description);
     void moveTo(glm::vec3 position);
 
-    std::map<std::string, std::string> getWeaknesses();
+    std::string getWeakness();
 
-    void setWeaknesses(const std::map<std::string, std::string> &weaknesses);
+    void setWeakness(const std::string &weaknesses);
 
-    std::map<std::string, std::string> getResistances();
+    std::string getResistance();
 
-    void setResistances(const std::map<std::string, std::string> &resistances);
+    void setResistance(const std::string resistances);
 
     std::string getType();
 
-    void setType(const std::string &type);
+    void setType(const std::string type);
 
     int getAtk();
 

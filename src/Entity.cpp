@@ -45,6 +45,14 @@ void Entity::setDescription(const std::string &description) {
     this->description = description;
 }
 
+std::string Entity::getModel() {
+    return model;
+}
+
+void Entity::setModel(const std::string &model) {
+    this->model = model;
+}
+
 
 
 

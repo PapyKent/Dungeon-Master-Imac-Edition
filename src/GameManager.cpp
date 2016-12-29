@@ -95,47 +95,41 @@ bool GameManager::findEquipment(int id, Equipment &e) {
     return false;
 }
 
-bool GameManager::eventManager(SDL_Event &event) {
+void GameManager::eventManager(SDL_Event &event) {
 
     switch (event.type) {
         case SDL_QUIT:
             this->statut = true;
             break;
+        case SDL_KEYUP:
 
-        case SDL_KEYDOWN:
-
-            switch (event.key.keysym.unicode) {
-                case 97 : //a
-                case 65:
+            switch (event.key.keysym.sym) {
+                case SDLK_q:
                     this->player->rotateLeft(90);
-                    return true;
-                case 101 :
-                case 69://e
+                    break;
+                case SDLK_e:
                     this->player->rotateLeft(-90);
-                    return true;
-                case 122 :
-                case 90: //z
+                    break;
+                case SDLK_w:
                     this->player->moveFront(1);
-                    return true;
-                case 115 :
-                case 83://s
+                    break;
+                case SDLK_s:
                     this->player->moveFront(-1);
-                    return true;
-                case 113 :
-                case 81://q
+                    break;
+                case SDLK_a:
                     this->player->moveLeft(1);
-                    return true;
-                case 100 :
-                case 68://d
+                    break;
+                case SDLK_d:
                     this->player->moveLeft(-1);
-                    return true;
+                    break;
             }
             break;
 
         default:
             break;
+
     }
-    return false;
+
 
 }
 

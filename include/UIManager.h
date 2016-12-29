@@ -49,10 +49,9 @@ public:
     int initGlew();
     void loadShaders( glimac::Program &program, char **argv);
     void initOpenGL(glimac::Program &program);
-    void render();
+    void render(glm::mat4 viewMatrix);
     void updateDisplay();
     void freeRessources();
-    void majMatrices(glm::mat4 viewMatrix);
 };
 
 

@@ -57,12 +57,10 @@ int main(int argc, char **argv) {
         // Event loop:
         SDL_Event e;
         while (uim.windowManager->pollEvent(e)) {
-            if(gm.eventManager(e)) {
-                uim.majMatrices(gm.player->camera->getViewMatrix());
-            }
+            gm.eventManager(e);
         }
         // render code
-        uim.render();
+        uim.render(gm.player->camera->getViewMatrix());
         // Update the display
         uim.updateDisplay();
     }

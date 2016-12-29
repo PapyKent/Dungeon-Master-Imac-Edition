@@ -11,3 +11,4 @@ float toolBox::convertDegToRad(float deg) {
 float toolBox::convertRadToDeg(float rad) {
     return (rad/M_PI)*180;
 }
+

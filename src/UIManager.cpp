@@ -128,7 +128,7 @@ void UIManager::initOpenGL(glimac::Program &program) {
 
 }
 
-void UIManager::render() {
+void UIManager::render(glm::mat4 viewMatrix) {
 
     /*********************************
          * HERE SHOULD COME THE RENDERING CODE
@@ -139,7 +139,7 @@ void UIManager::render() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     //envoyer les matrices
-    glUniformMatrix4fv(uMVPMatrixLoc,1,GL_FALSE,glm::value_ptr(ProjMatrix * MVMatrix));
+    glUniformMatrix4fv(uMVPMatrixLoc,1,GL_FALSE,glm::value_ptr(ProjMatrix * MVMatrix * viewMatrix));
     glUniformMatrix4fv(uMVMatrixLoc,1,GL_FALSE,glm::value_ptr(MVMatrix));
     glUniformMatrix4fv(uNormalMatrixLoc,1,GL_FALSE,glm::value_ptr(NormalMatrix));
 
@@ -160,7 +160,7 @@ void UIManager::render() {
     glBindVertexArray(0);
 
 
-
+/*
     for(int i =0;i<32;i++){
         glm::mat4 MVMatrix2 = glm::translate(glm::mat4(1), glm::vec3(0, 0, -5)); // Translation
         MVMatrix2 = glm::rotate(MVMatrix2, windowManager->getTime()/i, glm::vec3(1,1,1)); // Translation * Rotation
@@ -177,7 +177,7 @@ void UIManager::render() {
         glBindVertexArray(vao);
         glDrawArrays(GL_TRIANGLES, 0, sphere->getVertexCount());
         glBindVertexArray(0);
-    }
+    }*/
 
 
 }
@@ -192,10 +192,5 @@ void UIManager::freeRessources() {
 
 }
 
-void UIManager::majMatrices(glm::mat4 viewMatrix) {
-    ProjMatrix *= viewMatrix;
-    MVMatrix *= viewMatrix;
-    NormalMatrix = glm::transpose(glm::inverse(MVMatrix));
-}
 
 

@@ -23,10 +23,12 @@ void Player::rotateLeft(float degrees) {
 
 void Player::moveFront(float t) {
     this->camera->moveFront(t);
+    this->setPosition(this->camera->m_position);
 }
 
 void Player::moveLeft(float t) {
     this->camera->moveLeft(t);
+    this->setPosition(this->camera->m_position);
 }
 
 

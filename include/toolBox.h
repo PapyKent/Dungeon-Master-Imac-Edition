@@ -4,12 +4,16 @@
 
 #ifndef IMACGL_TOOLBOX_H
 #define IMACGL_TOOLBOX_H
+#include <vector>
+#include <glimac/glm.hpp>
+
 #define M_PI 3.14159265358979323846
 
 class toolBox {
 public:
     static float convertDegToRad(float deg);
     static float convertRadToDeg(float rad);
+
 };
 
 

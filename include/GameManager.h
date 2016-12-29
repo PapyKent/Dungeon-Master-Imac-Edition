@@ -50,7 +50,7 @@ public:
     void setGameName(const std::string &gameName);
 
 
-    bool eventManager(SDL_Event &e);
+    void eventManager(SDL_Event &e);
 
     bool getStatut() const;
 

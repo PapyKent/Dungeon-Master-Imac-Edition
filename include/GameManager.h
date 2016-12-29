@@ -10,6 +10,7 @@
 #include "monster.h"
 #include "treasure.h"
 #include "Map.h"
+#include "Player.h"
 
 
 class GameManager {
@@ -21,12 +22,12 @@ private:
     std::string ppmFile;
     std::string gameName;
     bool statut;
-
-
+    bool button;
 
 public:
     Map *map;
     GameManager();
+    Player* player;
 
     void addMonster(Monster m);
     void addTreasure(Treasure t);
@@ -49,7 +50,7 @@ public:
     void setGameName(const std::string &gameName);
 
 
-    void eventManager(SDL_Event &e);
+    bool eventManager(SDL_Event &e);
 
     bool getStatut() const;
 

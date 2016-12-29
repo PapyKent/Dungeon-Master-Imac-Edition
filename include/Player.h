@@ -7,12 +7,17 @@
 
 
 #include "Entity.h"
+#include "Camera.h"
 
 class Player : public Entity{
 public :
+    Camera* camera;
     Player();
     Player(int id, const std::string &name, const glm::vec3 &position, const std::string &description);
-    void moveTo(glm::vec3 position);
+    void moveLeft(float t);
+    void moveFront(float t);
+    void rotateLeft(float degrees);
+    void rotateUp(float degrees);
 
 
 };

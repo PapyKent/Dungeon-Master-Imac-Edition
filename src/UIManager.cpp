@@ -12,6 +12,7 @@ void UIManager::initSDL(float largeur, float hauteur, const char *name) {
     this->hauteur = hauteur;
     this->largeur = largeur;
     this->windowManager = new glimac::SDLWindowManager(largeur, hauteur, name);
+    SDL_EnableUNICODE(1);
 }
 
 int UIManager::initGlew() {
@@ -189,6 +190,12 @@ void UIManager::freeRessources() {
     glDeleteBuffers(1, &vbo);
     glDeleteVertexArrays(1, &vao);
 
+}
+
+void UIManager::majMatrices(glm::mat4 viewMatrix) {
+    ProjMatrix *= viewMatrix;
+    MVMatrix *= viewMatrix;
+    NormalMatrix = glm::transpose(glm::inverse(MVMatrix));
 }
 
 

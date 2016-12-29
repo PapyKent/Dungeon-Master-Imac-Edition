@@ -52,6 +52,7 @@ public:
     void render();
     void updateDisplay();
     void freeRessources();
+    void majMatrices(glm::mat4 viewMatrix);
 };
 
 

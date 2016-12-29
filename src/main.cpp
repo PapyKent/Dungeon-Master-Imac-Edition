@@ -17,13 +17,13 @@
 #include "../include/EntityLoader.h"
 #include "../include/MapLoader.h"
 #include "../include/UIManager.h"
+#include "../include/toolBox.h"
 
 using namespace glimac;
 
 int main(int argc, char **argv) {
 
     GameManager gm;
-
     EntityLoader::loadEntities(gm,"../../files/xml/game.xml");
 
     MapLoader::loadMap(gm);
@@ -57,9 +57,10 @@ int main(int argc, char **argv) {
         // Event loop:
         SDL_Event e;
         while (uim.windowManager->pollEvent(e)) {
-            gm.eventManager(e);
+            if(gm.eventManager(e)) {
+                uim.majMatrices(gm.player->camera->getViewMatrix());
+            }
         }
-
         // render code
         uim.render();
         // Update the display

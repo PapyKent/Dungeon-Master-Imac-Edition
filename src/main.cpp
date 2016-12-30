@@ -18,6 +18,7 @@
 #include "../include/MapLoader.h"
 #include "../include/UIManager.h"
 #include "../include/toolBox.h"
+#include "../include/Model3d.h"
 
 using namespace glimac;
 
@@ -37,18 +38,18 @@ int main(int argc, char **argv) {
     // Initialize glew for OpenGL3+ support
     uim.initGlew();
 
+    gm.map->initMap3D();
+
+
 
     //charge les shaders que l'on a ajouté dans le dossier shaders
-    Program program ;
-    uim.loadShaders(program,argv);
-    program.use();
+   // Program program ;
+    //uim.loadShaders(program,argv);
+   // program.use();
 
 
 
-    std::unique_ptr<Image> ImE = loadImage("..\\..\\assets\\textures\\EarthMap.jpg");
-    std::unique_ptr<Image> ImM = loadImage("..\\..\\assets\\textures\\MoonMap.jpg");
-
-    uim.initOpenGL(program);
+    //uim.initOpenGL(program);
 
     // Application loop:
     bool done = false;
@@ -60,7 +61,7 @@ int main(int argc, char **argv) {
             gm.eventManager(e);
         }
         // render code
-        uim.render(gm.player->camera->getViewMatrix());
+        uim.render(&gm);
         // Update the display
         uim.updateDisplay();
     }

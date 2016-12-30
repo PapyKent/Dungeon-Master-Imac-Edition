@@ -96,7 +96,8 @@ bool GameManager::findEquipment(int id, Equipment &e) {
 }
 
 void GameManager::eventManager(SDL_Event &event) {
-
+    int angleRot = 90;
+    int pas = 2;
     switch (event.type) {
         case SDL_QUIT:
             this->statut = true;
@@ -105,22 +106,22 @@ void GameManager::eventManager(SDL_Event &event) {
 
             switch (event.key.keysym.sym) {
                 case SDLK_q:
-                    this->player->rotateLeft(90);
+                    this->player->rotateLeft(angleRot);
                     break;
                 case SDLK_e:
-                    this->player->rotateLeft(-90);
+                    this->player->rotateLeft(-angleRot);
                     break;
                 case SDLK_w:
-                    this->player->moveFront(1);
+                    this->player->moveFront(pas);
                     break;
                 case SDLK_s:
-                    this->player->moveFront(-1);
+                    this->player->moveFront(-pas);
                     break;
                 case SDLK_a:
-                    this->player->moveLeft(1);
+                    this->player->moveLeft(pas);
                     break;
                 case SDLK_d:
-                    this->player->moveLeft(-1);
+                    this->player->moveLeft(-pas);
                     break;
             }
             break;

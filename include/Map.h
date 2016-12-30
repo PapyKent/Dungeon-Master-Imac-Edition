@@ -6,6 +6,7 @@
 #define IMACGL_MAP_H
 
 #include <vector>
+#include "Model3d.h"
 
 using namespace std;
 
@@ -15,10 +16,13 @@ private:
     int columns;
     int ** map;
 
+
 public:
     Map();
     Map(int i,int j);
     ~Map();
+
+    Model3d ** map3D;
 
     int getCase(int i,int j);
     void setCase(int i,int j,int value);
@@ -29,6 +33,7 @@ public:
     int getColumns() const;
     void setColumns(int columns);
 
+    void initMap3D();
 
 };
 

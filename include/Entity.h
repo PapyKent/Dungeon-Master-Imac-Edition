@@ -15,6 +15,7 @@ private:
     glm::vec3 position;
     std::string description;
     std::string model;
+
 public :
     Entity();
     Entity(int id, std::string name, glm::vec3 position, std::string description);

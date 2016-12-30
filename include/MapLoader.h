@@ -18,6 +18,7 @@ class MapLoader {
 public :
     static void loadMap(GameManager &gm);
 
+
 };
 
 

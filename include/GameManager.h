@@ -24,6 +24,7 @@ private:
     bool statut;
     bool button;
 
+
 public:
     Map *map;
     GameManager();

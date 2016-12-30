@@ -31,6 +31,10 @@ Map::~Map() {
         delete[] map[i];
     delete[] map;
 
+    for (int i = 0; i < columns; i++)
+        delete[] map3D[i];
+    delete[] map3D;
+
 }
 
 int Map::getLines() const {
@@ -47,4 +51,45 @@ int Map::getColumns() const {
 
 void Map::setColumns(int columns) {
     Map::columns = columns;
+}
+
+void Map::initMap3D() {
+    map3D = new Model3d*[columns];
+    for (int i = 0; i < columns; i++)
+        map3D[i] = new Model3d[lines];
+
+    int cube_size = 2;
+    for (int i = 0; i < columns; i++){
+        for(int j = 0 ; j < lines;j++){
+            map3D[i][j].model = "Cube";
+            switch(map[i][j]){
+                case 1 :
+                    map3D[i][j].text = "start";
+                    map3D[i][j].position = glm::vec3(i*cube_size,-cube_size,j*cube_size);
+                    map3D[i][j].initModel();
+                    break;
+                case 2 :
+                    map3D[i][j].text = "end";
+                    map3D[i][j].initModel();
+                    map3D[i][j].position = glm::vec3(i*cube_size,-cube_size,j*cube_size);
+                    break;
+                case 3 :
+                    map3D[i][j].text = "wall";
+                    map3D[i][j].initModel();
+                    map3D[i][j].position = glm::vec3(i*cube_size,0,j*cube_size);
+                    break;
+                case 4 :
+                    map3D[i][j].text = "sol";
+                    map3D[i][j].initModel();
+                    map3D[i][j].position = glm::vec3(i*cube_size,-cube_size,j*cube_size);
+                    break;
+
+
+                default:
+                    break;
+            }
+
+
+        }
+    }
 }

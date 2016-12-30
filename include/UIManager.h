@@ -12,6 +12,8 @@
 #include <iostream>
 #include <GL/glut.h>
 #include <GL/gl.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <string>
 #include <SDL/SDL.h>
 
@@ -20,6 +22,8 @@
 #include <glimac/Sphere.hpp>
 #include <glimac/glm.hpp>
 #include <glimac/Image.hpp>
+#include <glimac/Geometry.hpp>
+#include "GameManager.h"
 
 class UIManager {
 public:
@@ -49,9 +53,10 @@ public:
     int initGlew();
     void loadShaders( glimac::Program &program, char **argv);
     void initOpenGL(glimac::Program &program);
-    void render(glm::mat4 viewMatrix);
+    void render(GameManager* gm);
     void updateDisplay();
     void freeRessources();
+
 };
 
 

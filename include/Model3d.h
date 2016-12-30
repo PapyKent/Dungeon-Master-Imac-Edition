@@ -40,7 +40,7 @@ public:
 
     //texture
     std::unique_ptr<glimac::Image> texture;
-    GLuint * textureID;
+    GLuint textureID;
 
     //
     const GLuint VERTEX_ATTR_POSITION = 0;
@@ -50,6 +50,7 @@ public:
     glm::mat4 ProjMatrix;
     glm::mat4 MVMatrix;
     glm::mat4 NormalMatrix;
+    GLuint uTexture;
 
     GLint  uMVPMatrixLoc;
     GLint  uMVMatrixLoc;

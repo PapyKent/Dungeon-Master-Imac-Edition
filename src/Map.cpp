@@ -79,7 +79,7 @@ void Map::initMap3D() {
                     map3D[i][j].position = glm::vec3(i*cube_size,0,j*cube_size);
                     break;
                 case 4 :
-                    map3D[i][j].text = "sol";
+                    map3D[i][j].text = "ground";
                     map3D[i][j].initModel();
                     map3D[i][j].position = glm::vec3(i*cube_size,-cube_size,j*cube_size);
                     break;

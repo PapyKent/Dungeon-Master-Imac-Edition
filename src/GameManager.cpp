@@ -123,6 +123,8 @@ void GameManager::eventManager(SDL_Event &event) {
                 case SDLK_d:
                     this->player->moveLeft(-pas);
                     break;
+                default:
+                    break;
             }
             break;
 

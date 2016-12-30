@@ -19,6 +19,7 @@ void Player::rotateUp(float degrees) {
 
 void Player::rotateLeft(float degrees) {
     this->camera->rotateLeft(degrees);
+
 }
 
 void Player::moveFront(float t) {

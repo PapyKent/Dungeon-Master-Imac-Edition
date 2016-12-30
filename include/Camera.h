@@ -13,8 +13,8 @@
 class Camera {
 public:
     glm::vec3 m_position;
-    float m_fPhi;
-    float m_fTheta;
+    double m_fPhi;
+    double m_fTheta;
     glm::vec3 m_FrontVector;
     glm::vec3 m_LeftVector;
     glm::vec3 m_UpVector;

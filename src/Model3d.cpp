@@ -23,26 +23,38 @@ void Model3d::initModel() {
     uMVPMatrixLoc = glGetUniformLocation(program.getGLId(), "uMVPMatrix");
     uMVMatrixLoc = glGetUniformLocation(program.getGLId(), "uMVMatrix");
     uNormalMatrixLoc = glGetUniformLocation(program.getGLId(), "uNormalMatrix");
-
+    uTexture = glGetUniformLocation(program.getGLId(), "uTexture");
     glEnable(GL_DEPTH_TEST);
+
+
 
     int largeur = 800;
     int hauteur = 800;
     ProjMatrix = glm::perspective<float>(glm::radians(70.f),largeur/hauteur,0.1f,100.f);
-    MVMatrix = glm::translate<float>(glm::mat4(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1), glm::vec3(0.f,0.f,-5.f));
+    MVMatrix = glm::translate<float>(glm::mat4(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1), glm::vec3(0.f,0.f,0.f));
     NormalMatrix = glm::transpose(glm::inverse(MVMatrix));
 
 
-
+    //texture
     this->texture = glimac::loadImage("../../assets/textures/"+text+".jpg");
-    //gluint
+    glGenTextures(1,&textureID);
+    glBindTexture(GL_TEXTURE_2D,textureID);
+    glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,this->texture->getWidth(),this->texture->getHeight(),0,GL_RGBA,GL_FLOAT ,this->texture->getPixels());
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    glBindTexture(GL_TEXTURE_2D,0);
+
+    //geometry.getIndexCount() * sizeof(const unsigned int), geometry.getIndexBuffer()
+
+
 
     glGenBuffers(1, &vbo); //vbo affecté directement
 
     //Binding VBO ->GL_ARRAYY_BUFFER
 
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
-
 
 
     //Remplir VBO
@@ -98,12 +110,6 @@ void Model3d::draw(glm::mat4 viewMatrix) {
         * HERE SHOULD COME THE RENDERING CODE
         *********************************/
 
-
-    //Nettoyer la fenetre, para indique ce qu'il faut nettoyer
-   // glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-// A BOUGER
-
-
     //modifs
     this->MVMatrix = glm::translate(glm::mat4(1), this->position); // Translation
     this->NormalMatrix = glm::transpose(glm::inverse(this->MVMatrix));
@@ -113,12 +119,17 @@ void Model3d::draw(glm::mat4 viewMatrix) {
     glUniformMatrix4fv(uMVMatrixLoc,1,GL_FALSE,glm::value_ptr(MVMatrix));
     glUniformMatrix4fv(uNormalMatrixLoc,1,GL_FALSE,glm::value_ptr(NormalMatrix));
 
+    glBindTexture(GL_TEXTURE_2D,textureID);
+    glUniform1i(uTexture,0);
 
     //Dessiner avec le VAO
     glBindVertexArray(vao);
     glDrawArrays(GL_TRIANGLES, 0, geometry.getVertexCount());
-
     glBindVertexArray(0);
+
+    glBindTexture(GL_TEXTURE_2D,0);
+
+
 
 
 /*
@@ -152,6 +163,7 @@ int Model3d::initGlew() {
 void Model3d::freeRessources() {
     glDeleteBuffers(1, &vbo);
     glDeleteVertexArrays(1, &vao);
+    glDeleteTextures(1,&textureID);
 
 }
 

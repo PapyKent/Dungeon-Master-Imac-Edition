@@ -5,7 +5,7 @@
 #include "../include/Camera.h"
 
 Camera::Camera() {
-    this->m_position = glm::vec3(1,1,0);
+    this->m_position = glm::vec3(1,1,1);
     m_fPhi = M_PI;
     m_fTheta = 0;
     computeDirectionVectors();
@@ -36,11 +36,13 @@ void Camera::moveFront(float t) {
 void Camera::rotateLeft(float degrees) {
     float rad = toolBox::convertDegToRad(degrees);
     m_fPhi+=rad;
+    computeDirectionVectors();
 }
 
 void Camera::rotateUp(float degrees) {
     float rad = toolBox::convertDegToRad(degrees);
     m_fTheta+=rad;
+    computeDirectionVectors();
 }
 
 glm::mat4 Camera::getViewMatrix() {

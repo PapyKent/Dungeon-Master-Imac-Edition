@@ -46,10 +46,6 @@ void Model3d::initModel() {
 
     glBindTexture(GL_TEXTURE_2D,0);
 
-    //geometry.getIndexCount() * sizeof(const unsigned int), geometry.getIndexBuffer()
-
-
-
     glGenBuffers(1, &vbo); //vbo affecté directement
 
     //Binding VBO ->GL_ARRAYY_BUFFER
@@ -115,7 +111,7 @@ void Model3d::draw(glm::mat4 viewMatrix) {
     this->NormalMatrix = glm::transpose(glm::inverse(this->MVMatrix));
 
     //envoyer les matrices
-    glUniformMatrix4fv(uMVPMatrixLoc,1,GL_FALSE,glm::value_ptr(ProjMatrix * MVMatrix * viewMatrix));
+    glUniformMatrix4fv(uMVPMatrixLoc,1,GL_FALSE,glm::value_ptr(ProjMatrix *  viewMatrix * MVMatrix ));
     glUniformMatrix4fv(uMVMatrixLoc,1,GL_FALSE,glm::value_ptr(MVMatrix));
     glUniformMatrix4fv(uNormalMatrixLoc,1,GL_FALSE,glm::value_ptr(NormalMatrix));
 

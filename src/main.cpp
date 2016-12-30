@@ -41,18 +41,18 @@ int main(int argc, char **argv) {
     gm.map->initMap3D();
 /*
     Model3d test;
-    test.model = "Cube";
+    test.model = "boule";
     test.text="MoonMap";
     test.position= glm::vec3 (0,0,0);
     test.initModel();
 
 
     Model3d test2;
-    test2.model = "Wolf/Wolf";
+    test2.model = "boule";
     test2.text="EarthMap";
     test2.position= glm::vec3 (0,0,10);
-    test2.initModel();
-*/
+    test2.initModel();*/
+
 
 
 
@@ -76,7 +76,7 @@ int main(int argc, char **argv) {
         }
         // render code
         uim.render(&gm);
-       /* glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        /*glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         test.draw(gm.player->camera->getViewMatrix());
         test2.draw(gm.player->camera->getViewMatrix());*/
         // Update the display

@@ -60,12 +60,32 @@ void Model3d::initModel() {
     //Debinder glBindBufer avec second para 0
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
+    // => Creation du IBO
+
+    glGenBuffers(1, &ibo);
+
+    // => On bind sur GL_ELEMENT_ARRAY_BUFFER, cible reservée pour les IBOs
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
+
+    // => Tableau d'indices: ce sont les indices des sommets à dessiner
+
+
+
+    // => On remplit l'IBO avec les indices:
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, this->geometry.getIndexCount() * sizeof(uint32_t), this->geometry.getIndexBuffer(), GL_STATIC_DRAW);
+
+    // => Comme d'habitude on debind avant de passer à autre chose
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+
 
     glGenVertexArrays(1, &vao);
 
 
     //binding du vao : pas de cible car une seule cible possible pour vao
     glBindVertexArray(vao);
+    // => On bind l'IBO sur GL_ELEMENT_ARRAY_BUFFER; puisqu'un VAO est actuellement bindé,
+    // cela a pour effet d'enregistrer l'IBO dans le VAO
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
 
     //activation des attributs de vertex, prend en para l'index renseignant le type de data
     //on prefere les déclarer auparavant dans des constantes plutot que en clair
@@ -120,7 +140,7 @@ void Model3d::draw(glm::mat4 viewMatrix) {
 
     //Dessiner avec le VAO
     glBindVertexArray(vao);
-    glDrawArrays(GL_TRIANGLES, 0, geometry.getVertexCount());
+    glDrawElements(GL_TRIANGLES, this->geometry.getIndexCount(), GL_UNSIGNED_INT,0);
     glBindVertexArray(0);
 
     glBindTexture(GL_TEXTURE_2D,0);

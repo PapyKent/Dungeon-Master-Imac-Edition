@@ -58,6 +58,7 @@ public:
 
     GLuint vbo;
     GLuint vao;
+    GLuint ibo;
 
     void initModel();
     void initGeometry();

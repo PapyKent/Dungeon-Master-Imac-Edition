@@ -41,7 +41,7 @@ public:
         const Image* m_pKdMap;
         const Image* m_pKsMap;
         const Image* m_pNormalMap;
-    };
+    }material;
 
 private:
     std::vector<Vertex> m_VertexBuffer;

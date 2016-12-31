@@ -24,6 +24,14 @@ void Model3d::initModel() {
     uMVMatrixLoc = glGetUniformLocation(program.getGLId(), "uMVMatrix");
     uNormalMatrixLoc = glGetUniformLocation(program.getGLId(), "uNormalMatrix");
     uTexture = glGetUniformLocation(program.getGLId(), "uTexture");
+
+    uKd = glGetUniformLocation(program.getGLId(), "uKd");
+    uKs = glGetUniformLocation(program.getGLId(), "uKs");
+    uShininess = glGetUniformLocation(program.getGLId(), "uShininess");
+
+    uLightPos_vs = glGetUniformLocation(program.getGLId(), "uLightPos_vs");
+    uLightIntensity = glGetUniformLocation(program.getGLId(), "uLightIntensity");
+
     glEnable(GL_DEPTH_TEST);
 
 
@@ -121,7 +129,7 @@ void Model3d::initGeometry() {
     geometry.loadOBJ("../../assets/models/"+model+".obj", "../../assets/models/"+model+".mtl");
 }
 
-void Model3d::draw(glm::mat4 viewMatrix) {
+void Model3d::draw(glm::mat4 viewMatrix,glm::vec3 posPlayer) {
     /*********************************
         * HERE SHOULD COME THE RENDERING CODE
         *********************************/
@@ -135,6 +143,21 @@ void Model3d::draw(glm::mat4 viewMatrix) {
     glUniformMatrix4fv(uMVMatrixLoc,1,GL_FALSE,glm::value_ptr(MVMatrix));
     glUniformMatrix4fv(uNormalMatrixLoc,1,GL_FALSE,glm::value_ptr(NormalMatrix));
 
+
+
+    //glUniform3f(uKd,this->geometry.material.m_Kd.x,this->geometry.material.m_Kd.y,this->geometry.material.m_Kd.z);//coeff reflec obj
+    //glUniform3f(uKs,this->geometry.material.m_Ks.x,this->geometry.material.m_Ks.y,this->geometry.material.m_Ks.z);//coeff reflec glossi
+    //glUniform1f(uShininess,this->geometry.material.m_Shininess);//exposant de brillance
+
+    glUniform3f(uKd,1,1,1);//coeff reflec obj
+    glUniform3f(uKs,1,1,1);//coeff reflec glossi
+    glUniform1f(uShininess,0.2);//exposant de brillance
+
+
+    glUniform3f(uLightPos_vs,posPlayer.x,posPlayer.y+2,posPlayer.z);
+    glUniform3f(uLightIntensity,2.5,2.5,2.6);
+
+
     glBindTexture(GL_TEXTURE_2D,textureID);
     glUniform1i(uTexture,0);
 
@@ -146,26 +169,6 @@ void Model3d::draw(glm::mat4 viewMatrix) {
     glBindTexture(GL_TEXTURE_2D,0);
 
 
-
-
-/*
-    for(int i =0;i<32;i++){
-        glm::mat4 MVMatrix2 = glm::translate(glm::mat4(1), glm::vec3(0, 0, -5)); // Translation
-        MVMatrix2 = glm::rotate(MVMatrix2, windowManager->getTime()/i, glm::vec3(1,1,1)); // Translation * Rotation
-        MVMatrix2 = glm::translate(MVMatrix2, glm::vec3(-2, 0, 0)); // Translation * Rotation * Translation
-        MVMatrix2 = glm::scale(MVMatrix2, glm::vec3(0.2, 0.2, 0.2)); // Translation * Rotation * Translation * Scale
-
-        glm::mat4 NormalMatrix2;
-        NormalMatrix2 = glm::transpose(glm::inverse(MVMatrix2));
-
-
-        glUniformMatrix4fv(uMVPMatrixLoc,1,GL_FALSE,glm::value_ptr(ProjMatrix * MVMatrix2));
-        glUniformMatrix4fv(uMVMatrixLoc,1,GL_FALSE,glm::value_ptr(MVMatrix2));
-        glUniformMatrix4fv(uNormalMatrixLoc,1,GL_FALSE,glm::value_ptr(NormalMatrix2));
-        glBindVertexArray(vao);
-        glDrawArrays(GL_TRIANGLES, 0, sphere->getVertexCount());
-        glBindVertexArray(0);
-    }*/
 }
 
 int Model3d::initGlew() {

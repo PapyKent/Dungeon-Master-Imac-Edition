@@ -7,6 +7,7 @@
 
 #include <glimac/glm.hpp>
 #include <string>
+#include "Model3d.h"
 
 class Entity {
 private:
@@ -15,6 +16,8 @@ private:
     glm::vec3 position;
     std::string description;
     std::string model;
+    std::string text;
+    Model3d* model3D;
 
 public :
     Entity();
@@ -34,6 +37,11 @@ public :
 
     std::string getModel();
     void setModel(const std::string &model);
+
+    std::string getText();
+    void setText(const std::string &text);
+
+    void initModel();
 
 };
 

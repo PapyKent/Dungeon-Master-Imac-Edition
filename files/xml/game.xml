@@ -4,8 +4,8 @@
 
     <monster>
         <id>1</id>
-        <name>Orc</name>
-        <description>Un orc velu.</description>
+        <name>Wolf</name>
+        <description>Un loup féroce.</description>
         <posX>0</posX>
         <posY>0</posY>
         <posZ>0</posZ>
@@ -18,26 +18,28 @@
         <weakness>Fire</weakness>
         <resistance>Physical</resistance>
 
-        <model>orc.obj</model>
+        <model>Wolf.obj</model>
+        <text>Wolf.obj</text>
     </monster>
 
     <monster>
         <id>2</id>
-        <name>Orc2</name>
+        <name>Wolf2</name>
         <description>Un 2e orc velu.</description>
-        <posX>1</posX>
+        <posX>10</posX>
         <posY>0</posY>
-        <posZ>0</posZ>
+        <posZ>2</posZ>
 
         <atk>10</atk>
         <def>5</def>
         <life>3</life>
         <type>Orc</type>
 
-        <weakness>Magical</weakness>
-        <resistance>Physical</resistance>
+        <model>Wolf.obj</model>
+        <text>Wolf.obj</text>
 
-        <model>orc.obj</model>
+        <model>orc</model>
+        <text>orc</text>
     </monster>
     <equipment>
         <id>1</id>
@@ -46,7 +48,8 @@
         <atk>10</atk>
         <def>0</def>
         <type>Physical</type>
-        <model>woodenSword.obj</model>
+        <model>woodenSword</model>
+        <text>woodenSword</text>
     </equipment>
 
     <equipment>
@@ -56,7 +59,8 @@
         <atk>20</atk>
         <def>5</def>
         <type>Magical</type>
-        <model>woodenSword.obj</model>
+        <model>woodenSword</model>
+        <text>woodenSword</text>
     </equipment>
 
 
@@ -67,7 +71,8 @@
         <posY>1</posY>
         <posZ>0</posZ>
         <gold>500</gold>
-        <model>woodTreasure.obj</model>
+        <model>woodTreasure</model>
+        <text>woodTreasure</text>
         <idReward>1</idReward>
     </treasure>
 
@@ -78,7 +83,8 @@
         <posY>1</posY>
         <posZ>0</posZ>
         <gold>0</gold>
-        <model>goldTreasure.obj</model>
+        <model>goldTreasure</model>
+        <text>woodTreasure</text>
         <idReward>2</idReward>
     </treasure>
 

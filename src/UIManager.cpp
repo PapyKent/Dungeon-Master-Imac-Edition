@@ -142,7 +142,7 @@ void UIManager::render(GameManager* gm) {
 
     for(int i = 0 ; i < gm->map->getColumns() ; i++){
         for(int j = 0 ; j < gm->map->getLines() ; j++){
-            gm->map->map3D[i][j].draw(gm->player->camera->getViewMatrix());
+            gm->map->map3D[i][j].draw(gm->player->camera->getViewMatrix(),gm->player->getPosition());
         }
     }
 

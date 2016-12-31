@@ -99,6 +99,10 @@ void EntityLoader::loadEntities(GameManager& gm,const char *path) {
             monster.setModel(docMonsters->FirstChildElement("model")->GetText());
         }
 
+        if (!Check::isElementNull(docMonsters, "text")) {
+            monster.setModel(docMonsters->FirstChildElement("text")->GetText());
+        }
+
 
         gm.addMonster(monster);
         docMonsters = docMonsters->NextSiblingElement("monster");

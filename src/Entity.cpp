@@ -13,7 +13,7 @@ Entity::Entity(int id, std::string name, glm::vec3 position, std::string descrip
 
 }
 
-int Entity::getId(){
+int Entity::getId() {
     return id;
 }
 
@@ -21,7 +21,7 @@ void Entity::setId(int id) {
     this->id = id;
 }
 
-std::string Entity::getName(){
+std::string Entity::getName() {
     return name;
 }
 
@@ -29,7 +29,7 @@ void Entity::setName(const std::string &name) {
     this->name = name;
 }
 
-glm::vec3 Entity::getPosition(){
+glm::vec3 Entity::getPosition() {
     return position;
 }
 
@@ -37,7 +37,7 @@ void Entity::setPosition(const glm::vec3 &position) {
     this->position = position;
 }
 
-std::string Entity::getDescription(){
+std::string Entity::getDescription() {
     return description;
 }
 
@@ -52,6 +52,27 @@ std::string Entity::getModel() {
 void Entity::setModel(const std::string &model) {
     this->model = model;
 }
+
+void Entity::initModel() {
+    this->model3D = new Model3d;
+
+    this->model3D->model = this->model;
+
+    this->model3D->text = this->text;
+    this->model3D->position = this->position;
+    this->model3D->initModel();
+
+}
+
+std::string Entity::getText() {
+    return this->text;
+}
+
+void Entity::setText(const std::string &text) {
+    this->text = text;
+}
+
+
 
 
 

@@ -60,11 +60,18 @@ public:
     GLuint vao;
     GLuint ibo;
 
+    GLint uKd;//coeff reflec obj
+    GLint uKs;//coeff reflec glossi
+    GLint uShininess;//exposant de brillance
+
+    GLint uLightPos_vs;
+    GLint uLightIntensity;
+
     void initModel();
     void initGeometry();
     int initGlew();
     void initProgram(std::string path);
-    void draw(glm::mat4 viewMatrix);
+    void draw(glm::mat4 viewMatrix,glm::vec3 posPlayer);
 
     void freeRessources();
 };

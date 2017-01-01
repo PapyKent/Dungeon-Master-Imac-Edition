@@ -1,7 +1,3 @@
-//
-// Created by Quentin on 06/12/2016.
-//
-
 #ifndef CONSOLEGAME_CHECK_H
 #define CONSOLEGAME_CHECK_H
 

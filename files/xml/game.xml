@@ -1,14 +1,14 @@
 <game>
     <gameName>Dungeon Master Imac Edition</gameName>
-    <ppm>../../assets//ppm/lab.ppm</ppm>
+    <ppm>../../assets//ppm/lab4.ppm</ppm>
 
     <monster>
         <id>1</id>
         <name>Wolf</name>
         <description>Un loup féroce.</description>
-        <posX>0</posX>
+        <posX>14</posX>
         <posY>0</posY>
-        <posZ>0</posZ>
+        <posZ>16</posZ>
 
         <atk>10</atk>
         <def>5</def>
@@ -26,9 +26,9 @@
         <id>2</id>
         <name>Wolf2</name>
         <description>Un 2e orc velu.</description>
-        <posX>10</posX>
+        <posX>12</posX>
         <posY>0</posY>
-        <posZ>2</posZ>
+        <posZ>24</posZ>
 
         <atk>10</atk>
         <def>5</def>
@@ -67,9 +67,9 @@
     <treasure>
         <id>1</id>
         <description>Un vieux coffre en bois.</description>
-        <posX>0</posX>
+        <posX>35</posX>
         <posY>0</posY>
-        <posZ>15</posZ>
+        <posZ>29</posZ>
         <gold>500</gold>
         <model>chest</model>
         <text>chest</text>
@@ -79,9 +79,9 @@
     <treasure>
         <id>2</id>
         <description>Un coffre en or.</description>
-        <posX>6</posX>
-        <posY>1</posY>
-        <posZ>0</posZ>
+        <posX>35</posX>
+        <posY>0</posY>
+        <posZ>21</posZ>
         <gold>0</gold>
         <model>chest</model>
         <text>chest</text>

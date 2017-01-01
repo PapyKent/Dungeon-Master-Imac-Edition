@@ -1,7 +1,3 @@
-//
-// Created by Quentin on 14/12/2016.
-//
-
 #ifndef IMACGL_MONSTER_H
 #define IMACGL_MONSTER_H
 
@@ -53,7 +49,7 @@ public:
     int getLife();
 
     void setLife(int life);
-    void initModel();
+    void initModel(Model3dtext* modelTextList);
 
 
 

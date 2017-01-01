@@ -1,0 +1,109 @@
+# Blender MTL File: 'sword.blend'
+# Material Count: 9
+
+newmtl Material
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.020149 0.456900 0.321582
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\kakamaka\Desktop\TurboSquid\Minecraft\SabieDiamant\Textures\Blue5.png
+
+newmtl Material__27
+Ns 9.803922
+Ka 0.588000 0.588000 0.588000
+Kd 0.012983 0.254152 0.181164
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:\Users\kakamaka\Desktop\TurboSquid\Minecraft\SabieDiamant\Textures\Blue3.png
+map_Ka C:\\Users\\kakamaka\\Desktop\\TurboSquid\\Minecraft\\SabieDiamant\\Textures\\Blue3.png
+
+newmtl Material__28
+Ns 9.803922
+Ka 0.588000 0.588000 0.588000
+Kd 0.004391 0.046665 0.034340
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:\Users\kakamaka\Desktop\TurboSquid\Minecraft\SabieDiamant\Textures\Blue1.png
+map_Ka C:\\Users\\kakamaka\\Desktop\\TurboSquid\\Minecraft\\SabieDiamant\\Textures\\Blue1.png
+
+newmtl Material__30
+Ns 9.803922
+Ka 0.588000 0.588000 0.588000
+Kd 0.034340 0.830770 0.584078
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:\Users\kakamaka\Desktop\TurboSquid\Minecraft\SabieDiamant\Textures\Blue6.png
+map_Ka C:\\Users\\kakamaka\\Desktop\\TurboSquid\\Minecraft\\SabieDiamant\\Textures\\Blue6.png
+
+newmtl Material__31
+Ns 9.803922
+Ka 0.588000 0.588000 0.588000
+Kd 0.012983 0.254152 0.181164
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:\Users\kakamaka\Desktop\TurboSquid\Minecraft\SabieDiamant\Textures\Blue4.png
+map_Ka C:\\Users\\kakamaka\\Desktop\\TurboSquid\\Minecraft\\SabieDiamant\\Textures\\Blue4.png
+
+newmtl Material__32
+Ns 9.803922
+Ka 0.588000 0.588000 0.588000
+Kd 0.019382 0.012286 0.003347
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:\Users\kakamaka\Desktop\TurboSquid\Minecraft\SabieDiamant\Textures\Wood1.png
+map_Ka C:\\Users\\kakamaka\\Desktop\\TurboSquid\\Minecraft\\SabieDiamant\\Textures\\Wood1.png
+
+newmtl Material__33
+Ns 9.803922
+Ka 0.588000 0.588000 0.588000
+Kd 0.132868 0.070360 0.012983
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:\Users\kakamaka\Desktop\TurboSquid\Minecraft\SabieDiamant\Textures\Wood3.png
+map_Ka C:\\Users\\kakamaka\\Desktop\\TurboSquid\\Minecraft\\SabieDiamant\\Textures\\Wood3.png
+
+newmtl Material__34
+Ns 9.803922
+Ka 0.588000 0.588000 0.588000
+Kd 0.242281 0.132868 0.020289
+Ks 0.000000 0.000000 0.000000
+Ke 0.003232 0.001772 0.000271
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:\Users\kakamaka\Desktop\TurboSquid\Minecraft\SabieDiamant\Textures\Wood2.png
+map_Ka C:\\Users\\kakamaka\\Desktop\\TurboSquid\\Minecraft\\SabieDiamant\\Textures\\Wood2.png
+
+newmtl Material__35
+Ns 9.803922
+Ka 0.588000 0.588000 0.588000
+Kd 0.063010 0.035601 0.007499
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:\Users\kakamaka\Desktop\TurboSquid\Minecraft\SabieDiamant\Textures\Wood4.png
+map_Ka C:\\Users\\kakamaka\\Desktop\\TurboSquid\\Minecraft\\SabieDiamant\\Textures\\Wood4.png

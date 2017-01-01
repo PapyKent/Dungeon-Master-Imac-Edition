@@ -20,17 +20,26 @@
 #include "../include/toolBox.h"
 #include "../include/Model3d.h"
 
+
 using namespace glimac;
+
+void addModel3dtexture(string text);
+Model3dtext* textureExist(string text);
+
+
+
 
 int main(int argc, char **argv) {
 
     GameManager gm;
     EntityLoader::loadEntities(gm,"../../files/xml/game.xml");
-
+    Model3dtext modelTextList;
     MapLoader::loadMap(gm);
 
     float largeur = 800;
     float hauteur = 800;
+
+
 
     UIManager uim;
     // Initialize SDL and open a window
@@ -38,9 +47,9 @@ int main(int argc, char **argv) {
     // Initialize glew for OpenGL3+ support
     uim.initGlew();
 
-    gm.map->initMap3D();
+    gm.map->initMap3D(&modelTextList);
     gm.player->moveTo(gm.map->start);
-    gm.initEntities3d();
+    gm.initEntities3d(&modelTextList);
 
 
     // Application loop:
@@ -57,8 +66,10 @@ int main(int argc, char **argv) {
         // Update the display
         uim.updateDisplay();
     }
-    //liberation des ressources
-    uim.freeRessources();
+
 
     return 0;
 }
+
+
+

@@ -1,7 +1,3 @@
-//
-// Created by Quentin on 14/12/2016.
-//
-
 #ifndef IMACGL_TREASURE_H
 #define IMACGL_TREASURE_H
 
@@ -29,7 +25,7 @@ public:
     Equipment getReward();
     void setReward(Equipment reward);
 
-    void initModel();
+    void initModel(Model3dtext* modelTextList);
 
 
 };

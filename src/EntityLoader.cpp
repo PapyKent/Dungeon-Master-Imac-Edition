@@ -1,11 +1,7 @@
-//
-// Created by Quentin on 14/12/2016.
-//
-
 #include "../include/EntityLoader.h"
 
 
-void EntityLoader::loadEntities(GameManager& gm,const char *path) {
+void EntityLoader::loadEntities(GameManager &gm, const char *path) {
     XMLDocument doc;
     doc.LoadFile(path);
 
@@ -107,9 +103,6 @@ void EntityLoader::loadEntities(GameManager& gm,const char *path) {
         gm.addMonster(monster);
         docMonsters = docMonsters->NextSiblingElement("monster");
     }
-
-
-
 
 
     XMLElement *docEquipment;
@@ -226,7 +219,7 @@ void EntityLoader::loadEntities(GameManager& gm,const char *path) {
         if (Check::isTypeCorrect(docTreasures->FirstChildElement("idReward"))) {
             int idReward = stoi(docTreasures->FirstChildElement("idReward")->GetText());
             Equipment tmp;
-            if(gm.findEquipment(idReward,tmp) != false){
+            if (gm.findEquipment(idReward, tmp) != false) {
                 treasure.setReward(tmp);
             }
         }

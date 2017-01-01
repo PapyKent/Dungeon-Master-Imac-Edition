@@ -1,20 +1,16 @@
-//
-// Created by Quentin on 30/12/2016.
-//
-
 #include "../include/Model3d.h"
+
 
 Model3d::Model3d() {
 
 }
 
 
-
-Model3d::~Model3d(){
+Model3d::~Model3d() {
     freeRessources();
 }
 
-void Model3d::initModel(std::string type) {
+void Model3d::initModel(std::string type, Model3dtext *modelTextList) {
 
     initProgram(type);
     initGlew();
@@ -35,24 +31,37 @@ void Model3d::initModel(std::string type) {
     glEnable(GL_DEPTH_TEST);
 
 
-
     int largeur = 800;
     int hauteur = 800;
-    ProjMatrix = glm::perspective<float>(glm::radians(70.f),largeur/hauteur,0.1f,100.f);
-    MVMatrix = glm::translate<float>(glm::mat4(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1), glm::vec3(0.f,0.f,0.f));
+
+
+    ProjMatrix = glm::perspective<float>(glm::radians(70.f), largeur / hauteur, 0.1f, 100.f);
+    MVMatrix = glm::translate<float>(glm::mat4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1),
+                                     glm::vec3(0.f, 0.f, 0.f));
     NormalMatrix = glm::transpose(glm::inverse(MVMatrix));
 
-
     //texture
-    this->texture = glimac::loadImage("../../assets/textures/"+text+".jpg");
-    glGenTextures(1,&textureID);
-    glBindTexture(GL_TEXTURE_2D,textureID);
-    glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,this->texture->getWidth(),this->texture->getHeight(),0,GL_RGBA,GL_FLOAT ,this->texture->getPixels());
+/*     model3Dtext *tmpText = modelTextList->textureExist(text);
+     if (tmpText == NULL) {
+         modelTextList->addModel3dtexture(text);
+         tmpText = modelTextList->textureExist(text);
+     }
+
+     this->texture.reset(tmpText->texture);
+     textureID = tmpText->textureID;*/
+
+
+    this->texture = glimac::loadImage("../../assets/textures/" + text + ".png");
+    glGenTextures(1, &textureID);
+
+    glBindTexture(GL_TEXTURE_2D, textureID);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, this->texture->getWidth(), this->texture->getHeight(), 0, GL_RGBA, GL_FLOAT,
+                 this->texture->getPixels());
 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-    glBindTexture(GL_TEXTURE_2D,0);
+    glBindTexture(GL_TEXTURE_2D, 0);
 
     glGenBuffers(1, &vbo); //vbo affecté directement
 
@@ -63,7 +72,8 @@ void Model3d::initModel(std::string type) {
 
     //Remplir VBO
 
-    glBufferData(GL_ARRAY_BUFFER, this->geometry.getVertexCount()*sizeof(glimac::Geometry::Vertex), this->geometry.getVertexBuffer(), GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, this->geometry.getVertexCount() * sizeof(glimac::Geometry::Vertex),
+                 this->geometry.getVertexBuffer(), GL_STATIC_DRAW);
 
     //Debinder glBindBufer avec second para 0
     glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -80,7 +90,8 @@ void Model3d::initModel(std::string type) {
 
 
     // => On remplit l'IBO avec les indices:
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, this->geometry.getIndexCount() * sizeof(uint32_t), this->geometry.getIndexBuffer(), GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, this->geometry.getIndexCount() * sizeof(uint32_t),
+                 this->geometry.getIndexBuffer(), GL_STATIC_DRAW);
 
     // => Comme d'habitude on debind avant de passer à autre chose
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
@@ -126,10 +137,10 @@ void Model3d::initProgram(std::string path) {
 }
 
 void Model3d::initGeometry() {
-    geometry.loadOBJ("../../assets/models/"+model+".obj", "../../assets/models/"+model+".mtl");
+    geometry.loadOBJ("../../assets/models/" + model + ".obj", "../../assets/models/" + model + ".mtl");
 }
 
-void Model3d::draw(glm::mat4 viewMatrix,glm::vec3 posPlayer) {
+void Model3d::draw(glm::mat4 viewMatrix, glm::vec3 posPlayer) {
     /*********************************
         * HERE SHOULD COME THE RENDERING CODE
         *********************************/
@@ -139,9 +150,9 @@ void Model3d::draw(glm::mat4 viewMatrix,glm::vec3 posPlayer) {
     this->NormalMatrix = glm::transpose(glm::inverse(this->MVMatrix));
 
     //envoyer les matrices
-    glUniformMatrix4fv(uMVPMatrixLoc,1,GL_FALSE,glm::value_ptr(ProjMatrix *  viewMatrix * MVMatrix ));
-    glUniformMatrix4fv(uMVMatrixLoc,1,GL_FALSE,glm::value_ptr(MVMatrix));
-    glUniformMatrix4fv(uNormalMatrixLoc,1,GL_FALSE,glm::value_ptr(NormalMatrix));
+    glUniformMatrix4fv(uMVPMatrixLoc, 1, GL_FALSE, glm::value_ptr(ProjMatrix * viewMatrix * MVMatrix));
+    glUniformMatrix4fv(uMVMatrixLoc, 1, GL_FALSE, glm::value_ptr(MVMatrix));
+    glUniformMatrix4fv(uNormalMatrixLoc, 1, GL_FALSE, glm::value_ptr(NormalMatrix));
 
 
 
@@ -149,24 +160,24 @@ void Model3d::draw(glm::mat4 viewMatrix,glm::vec3 posPlayer) {
     //glUniform3f(uKs,this->geometry.material.m_Ks.x,this->geometry.material.m_Ks.y,this->geometry.material.m_Ks.z);//coeff reflec glossi
     //glUniform1f(uShininess,this->geometry.material.m_Shininess);//exposant de brillance
 
-    glUniform3f(uKd,1,1,1);//coeff reflec obj
-    glUniform3f(uKs,1,1,1);//coeff reflec glossi
-    glUniform1f(uShininess,0.2);//exposant de brillance
+    glUniform3f(uKd, 1, 1, 1);//coeff reflec obj
+    glUniform3f(uKs, 1, 1, 1);//coeff reflec glossi
+    glUniform1f(uShininess, 0.2);//exposant de brillance
 
 
-    glUniform3f(uLightPos_vs,posPlayer.x,posPlayer.y+2,posPlayer.z);
-    glUniform3f(uLightIntensity,2.5,2.5,2.6);
+    glUniform3f(uLightPos_vs, posPlayer.x, posPlayer.y + 2, posPlayer.z);
+    glUniform3f(uLightIntensity, 2.5, 2.5, 2.6);
 
 
-    glBindTexture(GL_TEXTURE_2D,textureID);
-    glUniform1i(uTexture,0);
+    glBindTexture(GL_TEXTURE_2D, textureID);
+    glUniform1i(uTexture, 0);
 
     //Dessiner avec le VAO
     glBindVertexArray(vao);
-    glDrawElements(GL_TRIANGLES, this->geometry.getIndexCount(), GL_UNSIGNED_INT,0);
+    glDrawElements(GL_TRIANGLES, this->geometry.getIndexCount(), GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
 
-    glBindTexture(GL_TEXTURE_2D,0);
+    glBindTexture(GL_TEXTURE_2D, 0);
 
 
 }
@@ -182,7 +193,7 @@ int Model3d::initGlew() {
 void Model3d::freeRessources() {
     glDeleteBuffers(1, &vbo);
     glDeleteVertexArrays(1, &vao);
-    glDeleteTextures(1,&textureID);
+    glDeleteTextures(1, &textureID);
 
 }
 

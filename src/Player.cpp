@@ -1,7 +1,3 @@
-//
-// Created by Quentin on 14/12/2016.
-//
-
 #include "../include/Player.h"
 
 Player::Player() {
@@ -9,7 +5,7 @@ Player::Player() {
 }
 
 Player::Player(int id, const std::string &name, const glm::vec3 &position, const std::string &description) : Entity(
-        id, name, position, description){
+        id, name, position, description) {
 
 }
 
@@ -34,12 +30,12 @@ void Player::moveLeft(float t) {
 
 void Player::moveTo(glm::vec3 position) {
     this->position = position;
-    this->camera->m_position=position+glm::vec3(1,1,1);
+    this->camera->m_position = position + glm::vec3(1, 1, 1);
 
 }
 
 glm::vec3 Player::getPosition() {
-    return this->camera->m_position-glm::vec3(1,1,1);
+    return this->camera->m_position - glm::vec3(1, 1, 1);
 }
 
 

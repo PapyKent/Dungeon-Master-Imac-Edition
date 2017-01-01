@@ -1,12 +1,9 @@
-//
-// Created by Quentin on 14/12/2016.
-//
-
 #ifndef IMACGL_MAP_H
 #define IMACGL_MAP_H
 
 #include <vector>
 #include "Model3d.h"
+#include "Model3dtext.h"
 
 using namespace std;
 
@@ -34,7 +31,7 @@ public:
     int getColumns() const;
     void setColumns(int columns);
 
-    void initMap3D();
+    void initMap3D(Model3dtext* modelTextList);
 
 };
 

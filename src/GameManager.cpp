@@ -1,7 +1,3 @@
-//
-// Created by Quentin on 14/12/2016.
-//
-
 #include "../include/GameManager.h"
 
 GameManager::GameManager() {
@@ -111,19 +107,19 @@ bool GameManager::eventManager(SDL_Event &event) {
                     this->player->rotateLeft(-angleRot);
                     break;
                 case SDLK_w:
-                    if(canMoveFront(pas))
+                    if (canMoveFront(pas))
                         this->player->moveFront(pas);
                     break;
                 case SDLK_s:
-                    if(canMoveFront(-pas))
+                    if (canMoveFront(-pas))
                         this->player->moveFront(-pas);
                     break;
                 case SDLK_a:
-                    if(canMoveLeft(pas))
-                         this->player->moveLeft(pas);
+                    if (canMoveLeft(pas))
+                        this->player->moveLeft(pas);
                     break;
                 case SDLK_d:
-                    if(canMoveLeft(-pas))
+                    if (canMoveLeft(-pas))
                         this->player->moveLeft(-pas);
                     break;
                 default:
@@ -136,7 +132,7 @@ bool GameManager::eventManager(SDL_Event &event) {
 
     }
 
-return checkFinish();
+    return checkFinish();
 }
 
 bool GameManager::getStatut() const {
@@ -147,24 +143,24 @@ void GameManager::setStatut(bool s) {
     this->statut = s;
 }
 
-void GameManager::initEntities3d() {
-    for (int i = 0; i<this->treasureList.size(); i++) {
-        Treasure* t = &this->treasureList[i];
-        t->initModel();
+void GameManager::initEntities3d(Model3dtext *modelTextList) {
+    for (int i = 0; i < this->treasureList.size(); i++) {
+        Treasure *t = &this->treasureList[i];
+        t->initModel(modelTextList);
     }
 
-    for (int i = 0; i<this->monsterList.size(); i++) {
-        Monster* t = &this->monsterList[i];
-        t->initModel();
+    for (int i = 0; i < this->monsterList.size(); i++) {
+        Monster *t = &this->monsterList[i];
+        t->initModel(modelTextList);
     }
 
-    for (int i = 0; i<this->equipmentList.size(); i++) {
-        Equipment* t = &this->equipmentList[i];
-        t->initModel();
+    for (int i = 0; i < this->equipmentList.size(); i++) {
+        Equipment *t = &this->equipmentList[i];
+        t->initModel(modelTextList);
     }
 }
 
-bool GameManager::checkFinish(){
+bool GameManager::checkFinish() {
     int x = round(this->player->getPosition().x);
     int z = round(this->player->getPosition().z);
 
@@ -175,24 +171,28 @@ bool GameManager::checkFinish(){
 }
 
 bool GameManager::canMoveFront(float t) {
-    glm::vec3 futurPos = this->player->getPosition() + (this->player->camera->m_FrontVector*t);
-    int futX = round(futurPos.x/2);
-    int futZ = round(futurPos.z/2);
-    if(futX < this->map->getColumns() && futX >=0 && futZ < this->map->getLines() && futZ >=0)
-        if(map->getCase(futX,futZ) !=3)
+    glm::vec3 futurPos = this->player->getPosition() + (this->player->camera->m_FrontVector * t);
+    int futX = round(futurPos.x / 2);
+    int futZ = round(futurPos.z / 2);
+    if (futX < this->map->getColumns() && futX >= 0 && futZ < this->map->getLines() && futZ >= 0)
+        if (map->getCase(futX, futZ) != 3)
             return true;
     return false;
 }
 
 bool GameManager::canMoveLeft(float t) {
-    glm::vec3 futurPos = this->player->getPosition() + (this->player->camera->m_LeftVector*t);
-    int futX = round(futurPos.x/2);
-    int futZ = round(futurPos.z/2);
-    if(futX < this->map->getColumns() && futX >=0 && futZ < this->map->getLines() && futZ >=0)
-        if(map->getCase(futX,futZ) !=3)
+    glm::vec3 futurPos = this->player->getPosition() + (this->player->camera->m_LeftVector * t);
+    int futX = round(futurPos.x / 2);
+    int futZ = round(futurPos.z / 2);
+    if (futX < this->map->getColumns() && futX >= 0 && futZ < this->map->getLines() && futZ >= 0)
+        if (map->getCase(futX, futZ) != 3)
             return true;
     return false;
 }
+
+
+
+
 
 
 

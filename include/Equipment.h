@@ -1,7 +1,3 @@
-//
-// Created by Quentin on 14/12/2016.
-//
-
 #ifndef IMACGL_EQUIPMENT_H
 #define IMACGL_EQUIPMENT_H
 
@@ -28,7 +24,7 @@ public:
 
     string getDamageType();
     void setDamageType(string damageType);
-    void initModel();
+    void initModel(Model3dtext* modelTextList);
 
 
 };

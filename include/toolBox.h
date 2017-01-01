@@ -1,7 +1,3 @@
-//
-// Created by Quentin on 28/12/2016.
-//
-
 #ifndef IMACGL_TOOLBOX_H
 #define IMACGL_TOOLBOX_H
 #include <vector>

@@ -1,7 +1,3 @@
-//
-// Created by Quentin on 14/12/2016.
-//
-
 #ifndef IMACGL_PLAYER_H
 #define IMACGL_PLAYER_H
 

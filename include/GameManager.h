@@ -1,7 +1,3 @@
-//
-// Created by Quentin on 14/12/2016.
-//
-
 #ifndef IMACGL_GAMEMANAGER_H
 #define IMACGL_GAMEMANAGER_H
 #include <vector>
@@ -11,6 +7,7 @@
 #include "treasure.h"
 #include "Map.h"
 #include "Player.h"
+#include "Model3dtext.h"
 
 
 class GameManager {
@@ -30,6 +27,9 @@ public:
 
     GameManager();
     Player* player;
+
+
+
 
     void addMonster(Monster m);
     void addTreasure(Treasure t);
@@ -61,7 +61,7 @@ public:
 
     void setStatut(bool jeu);
 
-    void initEntities3d();
+    void initEntities3d(Model3dtext* modelTextList);
 
 };
 

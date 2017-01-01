@@ -1,7 +1,3 @@
-//
-// Created by Quentin on 14/12/2016.
-//
-
 #include "../include/Treasure.h"
 
 Treasure::Treasure() {
@@ -29,12 +25,12 @@ void Treasure::setReward(Equipment reward) {
     this->reward = reward;
 }
 
-void Treasure::initModel() {
+void Treasure::initModel(Model3dtext *modelTextList) {
     this->model3D = new Model3d;
     this->model3D->model = this->model;
     this->model3D->text = this->text;
     this->model3D->position = this->position;
-    this->model3D->initModel("nomShader");
+    this->model3D->initModel("nomShader", modelTextList);
 }
 
 

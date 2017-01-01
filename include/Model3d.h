@@ -1,7 +1,3 @@
-//
-// Created by Quentin on 30/12/2016.
-//
-
 #ifndef IMACGL_MODEL3D_H
 #define IMACGL_MODEL3D_H
 
@@ -25,6 +21,7 @@
 #include <glimac/glm.hpp>
 #include <glimac/Image.hpp>
 #include <glimac/Geometry.hpp>
+#include "Model3dtext.h"
 
 class Model3d {
 public:
@@ -67,7 +64,7 @@ public:
     GLint uLightPos_vs;
     GLint uLightIntensity;
 
-    void initModel(std::string type);
+    void initModel(std::string type,Model3dtext* modelTextList);
     void initGeometry();
     int initGlew();
     void initProgram(std::string path);

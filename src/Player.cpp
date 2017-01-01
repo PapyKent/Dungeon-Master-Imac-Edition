@@ -32,4 +32,14 @@ void Player::moveLeft(float t) {
     this->setPosition(this->camera->m_position);
 }
 
+void Player::moveTo(glm::vec3 position) {
+    this->position = position;
+    this->camera->m_position=position+glm::vec3(1,1,1);
+
+}
+
+glm::vec3 Player::getPosition() {
+    return this->camera->m_position-glm::vec3(1,1,1);
+}
+
 

@@ -39,17 +39,18 @@ int main(int argc, char **argv) {
     uim.initGlew();
 
     gm.map->initMap3D();
+    gm.player->moveTo(gm.map->start);
     gm.initEntities3d();
 
 
     // Application loop:
     bool done = false;
 
-    while (!gm.getStatut()) {
+    while (!gm.getStatut() && !done) {
         // Event loop:
         SDL_Event e;
         while (uim.windowManager->pollEvent(e)) {
-            gm.eventManager(e);
+            done = gm.eventManager(e);
         }
         // render code
         uim.render(&gm);

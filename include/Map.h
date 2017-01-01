@@ -15,12 +15,13 @@ private:
     int lines;
     int columns;
     int ** map;
-
-
 public:
     Map();
     Map(int i,int j);
     ~Map();
+
+    glm::vec3 start;
+    glm::vec3 end;
 
     Model3d ** map3D;
 

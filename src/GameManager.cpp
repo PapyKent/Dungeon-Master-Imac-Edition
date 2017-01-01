@@ -94,7 +94,7 @@ bool GameManager::findEquipment(int id, Equipment &e) {
     return false;
 }
 
-void GameManager::eventManager(SDL_Event &event) {
+bool GameManager::eventManager(SDL_Event &event) {
     int angleRot = 90;
     int pas = 2;
     switch (event.type) {
@@ -111,16 +111,20 @@ void GameManager::eventManager(SDL_Event &event) {
                     this->player->rotateLeft(-angleRot);
                     break;
                 case SDLK_w:
-                    this->player->moveFront(pas);
+                    if(canMoveFront(pas))
+                        this->player->moveFront(pas);
                     break;
                 case SDLK_s:
-                    this->player->moveFront(-pas);
+                    if(canMoveFront(-pas))
+                        this->player->moveFront(-pas);
                     break;
                 case SDLK_a:
-                    this->player->moveLeft(pas);
+                    if(canMoveLeft(pas))
+                         this->player->moveLeft(pas);
                     break;
                 case SDLK_d:
-                    this->player->moveLeft(-pas);
+                    if(canMoveLeft(-pas))
+                        this->player->moveLeft(-pas);
                     break;
                 default:
                     break;
@@ -132,7 +136,7 @@ void GameManager::eventManager(SDL_Event &event) {
 
     }
 
-
+return checkFinish();
 }
 
 bool GameManager::getStatut() const {
@@ -159,6 +163,37 @@ void GameManager::initEntities3d() {
         t->initModel();
     }
 }
+
+bool GameManager::checkFinish(){
+    int x = round(this->player->getPosition().x);
+    int z = round(this->player->getPosition().z);
+
+    int Fx = round(this->map->end.x);
+    int Fz = round(this->map->end.z);
+
+    return x == Fx && z == Fz;
+}
+
+bool GameManager::canMoveFront(float t) {
+    glm::vec3 futurPos = this->player->getPosition() + (this->player->camera->m_FrontVector*t);
+    int futX = round(futurPos.x/2);
+    int futZ = round(futurPos.z/2);
+    if(futX < this->map->getColumns() && futX >=0 && futZ < this->map->getLines() && futZ >=0)
+        if(map->getCase(futX,futZ) !=3)
+            return true;
+    return false;
+}
+
+bool GameManager::canMoveLeft(float t) {
+    glm::vec3 futurPos = this->player->getPosition() + (this->player->camera->m_LeftVector*t);
+    int futX = round(futurPos.x/2);
+    int futZ = round(futurPos.z/2);
+    if(futX < this->map->getColumns() && futX >=0 && futZ < this->map->getLines() && futZ >=0)
+        if(map->getCase(futX,futZ) !=3)
+            return true;
+    return false;
+}
+
 
 
 

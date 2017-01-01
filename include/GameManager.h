@@ -52,7 +52,10 @@ public:
     void setGameName(const std::string &gameName);
 
 
-    void eventManager(SDL_Event &e);
+    bool eventManager(SDL_Event &e);
+    bool checkFinish();
+    bool canMoveFront(float t);
+    bool canMoveLeft(float t);
 
     bool getStatut() const;
 

@@ -100,7 +100,7 @@ void EntityLoader::loadEntities(GameManager& gm,const char *path) {
         }
 
         if (!Check::isElementNull(docMonsters, "text")) {
-            monster.setModel(docMonsters->FirstChildElement("text")->GetText());
+            monster.setText(docMonsters->FirstChildElement("text")->GetText());
         }
 
 
@@ -155,6 +155,10 @@ void EntityLoader::loadEntities(GameManager& gm,const char *path) {
 
         if (!Check::isElementNull(docEquipment, "model")) {
             equipment.setModel(docEquipment->FirstChildElement("model")->GetText());
+        }
+
+        if (!Check::isElementNull(docEquipment, "text")) {
+            equipment.setText(docEquipment->FirstChildElement("text")->GetText());
         }
 
         gm.addEquipment(equipment);
@@ -213,6 +217,10 @@ void EntityLoader::loadEntities(GameManager& gm,const char *path) {
 
         if (!Check::isElementNull(docTreasures, "model")) {
             treasure.setModel(docTreasures->FirstChildElement("model")->GetText());
+        }
+
+        if (!Check::isElementNull(docTreasures, "text")) {
+            treasure.setText(docTreasures->FirstChildElement("text")->GetText());
         }
 
         if (Check::isTypeCorrect(docTreasures->FirstChildElement("idReward"))) {

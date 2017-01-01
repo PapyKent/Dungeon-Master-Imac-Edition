@@ -14,9 +14,9 @@ Model3d::~Model3d(){
     freeRessources();
 }
 
-void Model3d::initModel() {
+void Model3d::initModel(std::string type) {
 
-    initProgram("cube");
+    initProgram(type);
     initGlew();
     initGeometry();
 

@@ -10,16 +10,16 @@
 #include "Model3d.h"
 
 class Entity {
-private:
+protected:
     int id;
     std::string name;
     glm::vec3 position;
     std::string description;
     std::string model;
     std::string text;
-    Model3d* model3D;
 
 public :
+
     Entity();
     Entity(int id, std::string name, glm::vec3 position, std::string description);
 
@@ -40,9 +40,6 @@ public :
 
     std::string getText();
     void setText(const std::string &text);
-
-    void initModel();
-
 };
 
 

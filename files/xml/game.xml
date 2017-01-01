@@ -13,13 +13,13 @@
         <atk>10</atk>
         <def>5</def>
         <life>3</life>
-        <type>Orc</type>
+        <type>Wolf</type>
 
         <weakness>Fire</weakness>
         <resistance>Physical</resistance>
 
-        <model>Wolf.obj</model>
-        <text>Wolf.obj</text>
+        <model>Wolf</model>
+        <text>Wolf</text>
     </monster>
 
     <monster>
@@ -33,13 +33,13 @@
         <atk>10</atk>
         <def>5</def>
         <life>3</life>
-        <type>Orc</type>
+        <type>Wolf</type>
 
-        <model>Wolf.obj</model>
-        <text>Wolf.obj</text>
+        <weakness>Fire</weakness>
+        <resistance>Physical</resistance>
 
-        <model>orc</model>
-        <text>orc</text>
+        <model>Wolf</model>
+        <text>Wolf</text>
     </monster>
     <equipment>
         <id>1</id>
@@ -48,8 +48,8 @@
         <atk>10</atk>
         <def>0</def>
         <type>Physical</type>
-        <model>woodenSword</model>
-        <text>woodenSword</text>
+        <model>sword</model>
+        <text>sword</text>
     </equipment>
 
     <equipment>
@@ -59,20 +59,20 @@
         <atk>20</atk>
         <def>5</def>
         <type>Magical</type>
-        <model>woodenSword</model>
-        <text>woodenSword</text>
+        <model>sword</model>
+        <text>sword</text>
     </equipment>
 
 
     <treasure>
         <id>1</id>
         <description>Un vieux coffre en bois.</description>
-        <posX>2</posX>
-        <posY>1</posY>
-        <posZ>0</posZ>
+        <posX>0</posX>
+        <posY>0</posY>
+        <posZ>15</posZ>
         <gold>500</gold>
-        <model>woodTreasure</model>
-        <text>woodTreasure</text>
+        <model>chest</model>
+        <text>chest</text>
         <idReward>1</idReward>
     </treasure>
 
@@ -83,8 +83,8 @@
         <posY>1</posY>
         <posZ>0</posZ>
         <gold>0</gold>
-        <model>goldTreasure</model>
-        <text>woodTreasure</text>
+        <model>chest</model>
+        <text>chest</text>
         <idReward>2</idReward>
     </treasure>
 

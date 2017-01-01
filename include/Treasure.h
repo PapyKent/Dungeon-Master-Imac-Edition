@@ -16,7 +16,10 @@ private:
     Equipment reward;
     int gold;
 
+
 public:
+    Model3d* model3D;
+
     Treasure();
     Treasure(int id, const std::string &name, const glm::vec3 &position, const std::string &description);
 
@@ -26,7 +29,8 @@ public:
     Equipment getReward();
     void setReward(Equipment reward);
 
-    
+    void initModel();
+
 
 };
 

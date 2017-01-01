@@ -66,21 +66,21 @@ void Map::initMap3D() {
                 case 1 :
                     map3D[i][j].text = "start";
                     map3D[i][j].position = glm::vec3(i*cube_size,-cube_size,j*cube_size);
-                    map3D[i][j].initModel();
+                    map3D[i][j].initModel("cube");
                     break;
                 case 2 :
                     map3D[i][j].text = "end";
-                    map3D[i][j].initModel();
+                    map3D[i][j].initModel("cube");
                     map3D[i][j].position = glm::vec3(i*cube_size,-cube_size,j*cube_size);
                     break;
                 case 3 :
                     map3D[i][j].text = "wall";
-                    map3D[i][j].initModel();
+                    map3D[i][j].initModel("cube");
                     map3D[i][j].position = glm::vec3(i*cube_size,0,j*cube_size);
                     break;
                 case 4 :
                     map3D[i][j].text = "ground";
-                    map3D[i][j].initModel();
+                    map3D[i][j].initModel("cube");
                     map3D[i][j].position = glm::vec3(i*cube_size,-cube_size,j*cube_size);
                     break;
 

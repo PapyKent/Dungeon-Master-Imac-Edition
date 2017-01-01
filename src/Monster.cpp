@@ -29,7 +29,7 @@ std::string Monster::getResistance(){
     return resistance;
 }
 
-void Monster::setResistance(std::string resistances) {
+void Monster::setResistance(std::string resistance) {
     this->resistance = resistance;
 }
 
@@ -65,4 +65,11 @@ void Monster::setLife(int life) {
     this->life = life;
 }
 
+void Monster::initModel() {
+    this->model3D = new Model3d;
+    this->model3D->model = this->model;
+    this->model3D->text = this->text;
+    this->model3D->position = this->position;
+    this->model3D->initModel("nomShader");
+}
 

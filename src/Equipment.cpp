@@ -29,3 +29,11 @@ string Equipment::getDamageType(){
 void Equipment::setDamageType(std::string damageType) {
     this->damageType = damageType;
 }
+
+void Equipment::initModel() {
+    this->model3D = new Model3d;
+    this->model3D->model = this->model;
+    this->model3D->text = this->text;
+    this->model3D->position = this->position;
+    this->model3D->initModel("nomShader");
+}

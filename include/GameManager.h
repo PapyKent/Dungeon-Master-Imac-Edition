@@ -15,9 +15,6 @@
 
 class GameManager {
 private:
-    std::vector<Monster> monsterList;
-    std::vector<Treasure> treasureList;
-    std::vector<Equipment> equipmentList;
 
     std::string ppmFile;
     std::string gameName;
@@ -27,6 +24,10 @@ private:
 
 public:
     Map *map;
+    std::vector<Monster> monsterList;
+    std::vector<Treasure> treasureList;
+    std::vector<Equipment> equipmentList;
+
     GameManager();
     Player* player;
 
@@ -56,6 +57,8 @@ public:
     bool getStatut() const;
 
     void setStatut(bool jeu);
+
+    void initEntities3d();
 
 };
 

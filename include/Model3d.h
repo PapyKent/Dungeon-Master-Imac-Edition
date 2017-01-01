@@ -67,7 +67,7 @@ public:
     GLint uLightPos_vs;
     GLint uLightIntensity;
 
-    void initModel();
+    void initModel(std::string type);
     void initGeometry();
     int initGlew();
     void initProgram(std::string path);

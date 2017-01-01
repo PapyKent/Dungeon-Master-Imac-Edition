@@ -16,7 +16,9 @@ private:
     int atk;
     int def;
     string damageType;
+
 public:
+    Model3d* model3D;
 
     int getAtk();
     void setAtk(int atk);
@@ -26,6 +28,7 @@ public:
 
     string getDamageType();
     void setDamageType(string damageType);
+    void initModel();
 
 
 };

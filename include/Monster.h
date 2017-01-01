@@ -20,10 +20,12 @@ private:
     int atk;
     int def;
     int life;
-    //modele 3D
+
 
 
 public:
+    Model3d* model3D;
+
     Monster();
     Monster(int id, const std::string &name, const glm::vec3 &position, const std::string &description);
     void moveTo(glm::vec3 position);
@@ -51,6 +53,7 @@ public:
     int getLife();
 
     void setLife(int life);
+    void initModel();
 
 
 

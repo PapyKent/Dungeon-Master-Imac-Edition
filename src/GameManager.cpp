@@ -143,6 +143,23 @@ void GameManager::setStatut(bool s) {
     this->statut = s;
 }
 
+void GameManager::initEntities3d() {
+    for (int i = 0; i<this->treasureList.size(); i++) {
+        Treasure* t = &this->treasureList[i];
+        t->initModel();
+    }
+
+    for (int i = 0; i<this->monsterList.size(); i++) {
+        Monster* t = &this->monsterList[i];
+        t->initModel();
+    }
+
+    for (int i = 0; i<this->equipmentList.size(); i++) {
+        Equipment* t = &this->equipmentList[i];
+        t->initModel();
+    }
+}
+
 
 
 

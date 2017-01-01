@@ -9,7 +9,7 @@ Treasure::Treasure() {
 }
 
 Treasure::Treasure(int id, const std::string &name, const glm::vec3 &position, const std::string &description) : Entity(
-        id, name, position, description){
+        id, name, position, description) {
 
 }
 
@@ -28,6 +28,15 @@ Equipment Treasure::getReward() {
 void Treasure::setReward(Equipment reward) {
     this->reward = reward;
 }
+
+void Treasure::initModel() {
+    this->model3D = new Model3d;
+    this->model3D->model = this->model;
+    this->model3D->text = this->text;
+    this->model3D->position = this->position;
+    this->model3D->initModel("nomShader");
+}
+
 
 
 

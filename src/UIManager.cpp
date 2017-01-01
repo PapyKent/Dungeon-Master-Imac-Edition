@@ -146,27 +146,16 @@ void UIManager::render(GameManager* gm) {
         }
     }
 
+    for(int i = 0 ; i < gm->monsterList.size() ; i++){
+        gm->monsterList[i].model3D->draw(gm->player->camera->getViewMatrix(),gm->player->getPosition());
+    }
+
+    for(int i = 0 ; i < gm->treasureList.size() ; i++){
+        gm->treasureList[i].model3D->draw(gm->player->camera->getViewMatrix(),gm->player->getPosition());
+    }
 
 
 
-/*
-    for(int i =0;i<32;i++){
-        glm::mat4 MVMatrix2 = glm::translate(glm::mat4(1), glm::vec3(0, 0, -5)); // Translation
-        MVMatrix2 = glm::rotate(MVMatrix2, windowManager->getTime()/i, glm::vec3(1,1,1)); // Translation * Rotation
-        MVMatrix2 = glm::translate(MVMatrix2, glm::vec3(-2, 0, 0)); // Translation * Rotation * Translation
-        MVMatrix2 = glm::scale(MVMatrix2, glm::vec3(0.2, 0.2, 0.2)); // Translation * Rotation * Translation * Scale
-
-        glm::mat4 NormalMatrix2;
-        NormalMatrix2 = glm::transpose(glm::inverse(MVMatrix2));
-
-
-        glUniformMatrix4fv(uMVPMatrixLoc,1,GL_FALSE,glm::value_ptr(ProjMatrix * MVMatrix2));
-        glUniformMatrix4fv(uMVMatrixLoc,1,GL_FALSE,glm::value_ptr(MVMatrix2));
-        glUniformMatrix4fv(uNormalMatrixLoc,1,GL_FALSE,glm::value_ptr(NormalMatrix2));
-        glBindVertexArray(vao);
-        glDrawArrays(GL_TRIANGLES, 0, sphere->getVertexCount());
-        glBindVertexArray(0);
-    }*/
 
 
 }

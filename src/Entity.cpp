@@ -53,16 +53,7 @@ void Entity::setModel(const std::string &model) {
     this->model = model;
 }
 
-void Entity::initModel() {
-    this->model3D = new Model3d;
 
-    this->model3D->model = this->model;
-
-    this->model3D->text = this->text;
-    this->model3D->position = this->position;
-    this->model3D->initModel();
-
-}
 
 std::string Entity::getText() {
     return this->text;
@@ -71,6 +62,10 @@ std::string Entity::getText() {
 void Entity::setText(const std::string &text) {
     this->text = text;
 }
+
+
+
+
 
 
 

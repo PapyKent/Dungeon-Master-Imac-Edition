@@ -9,6 +9,10 @@ class Player : public Entity{
 public :
     Camera* camera;
 
+    int atk;
+    int def;
+    int life;
+
     Player();
     Player(int id, const std::string &name, const glm::vec3 &position, const std::string &description);
     void moveLeft(float t);

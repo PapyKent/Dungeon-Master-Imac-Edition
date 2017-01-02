@@ -65,7 +65,7 @@ void Monster::initModel(Model3dtext *modelTextList) {
     this->model3D = new Model3d;
     this->model3D->model = this->model;
     this->model3D->text = this->text;
-    this->model3D->position = this->position;
+    this->model3D->position = this->position+(glm::vec3(1,0,1));
     this->model3D->initModel("nomShader", modelTextList);
 }
 

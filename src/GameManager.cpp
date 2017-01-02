@@ -3,6 +3,8 @@
 GameManager::GameManager() {
     this->player = new Player();
     button = false;
+    std::srand(time(NULL));
+    isFighting = false;
 }
 
 void GameManager::addMonster(Monster m) {
@@ -93,6 +95,7 @@ bool GameManager::findEquipment(int id, Equipment &e) {
 bool GameManager::eventManager(SDL_Event &event) {
     int angleRot = 90;
     int pas = 2;
+    bool atk = false;
     switch (event.type) {
         case SDL_QUIT:
             this->statut = true;
@@ -100,6 +103,7 @@ bool GameManager::eventManager(SDL_Event &event) {
         case SDL_KEYUP:
 
             switch (event.key.keysym.sym) {
+
                 case SDLK_q:
                     this->player->rotateLeft(angleRot);
                     break;
@@ -107,31 +111,54 @@ bool GameManager::eventManager(SDL_Event &event) {
                     this->player->rotateLeft(-angleRot);
                     break;
                 case SDLK_w:
-                    if (canMoveFront(pas))
-                        this->player->moveFront(pas);
+                    if (!isFighting) {
+                        if (canMoveFront(pas)) {
+                            this->player->moveFront(pas);
+                            moveEnnemies(pas);
+                        }
+                    }
                     break;
                 case SDLK_s:
-                    if (canMoveFront(-pas))
-                        this->player->moveFront(-pas);
+                    if (!isFighting) {
+                        if (canMoveFront(-pas)) {
+                            this->player->moveFront(-pas);
+                            moveEnnemies(pas);
+                        }
+                    }
                     break;
                 case SDLK_a:
-                    if (canMoveLeft(pas))
-                        this->player->moveLeft(pas);
+                    if (!isFighting) {
+                        if (canMoveLeft(pas)) {
+                            this->player->moveLeft(pas);
+                            moveEnnemies(pas);
+                        }
+                    }
+
                     break;
                 case SDLK_d:
-                    if (canMoveLeft(-pas))
-                        this->player->moveLeft(-pas);
+                    if (!isFighting) {
+                        if (canMoveLeft(-pas)) {
+                            this->player->moveLeft(-pas);
+                            moveEnnemies(pas);
+                        }
+                    }
+                    break;
+
+                case SDLK_SPACE:
+                    atk = true;
                     break;
                 default:
                     break;
             }
             break;
-
         default:
             break;
-
     }
-
+    isFighting = checkFight(pas, atk);
+    if (player->life <= 0) {
+        player->life = 10;
+        player->moveTo(map->start);
+    }
     return checkFinish();
 }
 
@@ -189,6 +216,107 @@ bool GameManager::canMoveLeft(float t) {
             return true;
     return false;
 }
+
+void GameManager::moveEnnemies(float pas) {
+    glm::vec3 FrontVector(0, 0, -1);
+    glm::vec3 LeftVector(-1, 0, 0);
+    for (int i = 0; i < this->monsterList.size(); i++) {
+        Monster *monster = &this->monsterList[i];
+        int choice = std::rand() % 4 + 1;
+        glm::vec3 futurPos;
+        int futX;
+        int futZ;
+        switch (choice) {
+            case 1://up
+            {
+                futurPos = monster->getPosition() + (FrontVector * pas);
+                futX = round(futurPos.x / 2);
+                futZ = round(futurPos.z / 2);
+                if (futX < this->map->getColumns() && futX >= 0 && futZ < this->map->getLines() && futZ >= 0) {
+                    if (map->getCase(futX, futZ) != 3) {
+                        if (glm::distance(futurPos, this->player->getPosition()) > 2) {
+                            monster->setPosition(futurPos);
+                            monster->model3D->position = futurPos + glm::vec3(1, 0, 1);
+                        }
+                    }
+                }
+                break;
+            }
+
+            case 2://down
+            {
+                futurPos = monster->getPosition() + (FrontVector * -pas);
+                futX = round(futurPos.x / 2);
+                futZ = round(futurPos.z / 2);
+                if (futX < this->map->getColumns() && futX >= 0 && futZ < this->map->getLines() && futZ >= 0)
+                    if (map->getCase(futX, futZ) != 3) {
+                        if (glm::distance(futurPos, this->player->getPosition()) > 2) {
+                            monster->setPosition(futurPos);
+                            monster->model3D->position = futurPos + glm::vec3(1, 0, 1);
+                        }
+                    }
+                break;
+            }
+            case 3://left
+            {
+                futurPos = monster->getPosition() + (LeftVector * pas);
+                futX = round(futurPos.x / 2);
+                futZ = round(futurPos.z / 2);
+                if (futX < this->map->getColumns() && futX >= 0 && futZ < this->map->getLines() && futZ >= 0)
+                    if (map->getCase(futX, futZ) != 3) {
+                        if (glm::distance(futurPos, this->player->getPosition()) > 2) {
+                            monster->setPosition(futurPos);
+                            monster->model3D->position = futurPos + glm::vec3(1, 0, 1);
+                        }
+                    }
+                break;
+            }
+            case 4://right
+            {
+                futurPos = monster->getPosition() + (LeftVector * -pas);
+                futX = round(futurPos.x / 2);
+                futZ = round(futurPos.z / 2);
+                if (futX < this->map->getColumns() && futX >= 0 && futZ < this->map->getLines() && futZ >= 0)
+                    if (map->getCase(futX, futZ) != 3) {
+                        if (glm::distance(futurPos, this->player->getPosition()) > 2) {
+                            monster->setPosition(futurPos);
+                            monster->model3D->position = futurPos + glm::vec3(1, 0, 1);
+                        }
+                    }
+                break;
+            }
+            default:
+                break;
+
+        }
+    }
+
+
+}
+
+bool GameManager::checkFight(float pas, bool atk) {
+    for (int i = 0; i < this->monsterList.size(); i++) {
+        Monster *monster = &this->monsterList[i];
+        if (glm::distance(this->player->getPosition(), monster->getPosition()) < pas * 2) {
+            if (atk)
+                fight(monster);
+            return true;
+        }
+    }
+
+    return false;
+}
+
+void GameManager::fight(Monster *monster) {
+    //hit
+    monster->setLife(monster->getLife() - 1);
+    //get hit
+    if (monster->getLife() > 0)
+        this->player->life -= 2;
+    else
+        removeMonster(monster->getId());
+}
+
 
 
 

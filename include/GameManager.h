@@ -2,6 +2,8 @@
 #define IMACGL_GAMEMANAGER_H
 #include <vector>
 #include <SDL/SDL.h>
+#include <stdlib.h>
+#include <time.h>
 
 #include "monster.h"
 #include "treasure.h"
@@ -27,7 +29,7 @@ public:
 
     GameManager();
     Player* player;
-
+    bool isFighting;
 
 
 
@@ -57,11 +59,17 @@ public:
     bool canMoveFront(float t);
     bool canMoveLeft(float t);
 
+    void moveEnnemies(float pas);
+
     bool getStatut() const;
 
     void setStatut(bool jeu);
 
     void initEntities3d(Model3dtext* modelTextList);
+
+    bool checkFight(float pas, bool atk);
+
+    void fight( Monster *monster);
 
 };
 

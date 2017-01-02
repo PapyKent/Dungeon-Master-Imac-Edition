@@ -6,11 +6,31 @@
         <id>1</id>
         <name>Wolf</name>
         <description>Un loup féroce.</description>
-        <posX>14</posX>
+        <posX>12</posX>
         <posY>0</posY>
-        <posZ>16</posZ>
+        <posZ>14</posZ>
 
-        <atk>10</atk>
+        <atk>1</atk>
+        <def>5</def>
+        <life>3</life>
+        <type>Wolf</type>
+
+        <weakness>Fire</weakness>
+        <resistance>Physical</resistance>
+
+        <model>Wolf</model>
+        <text>Wolf</text>
+    </monster>
+
+    <monster>
+        <id>3</id>
+        <name>Wolf3</name>
+        <description>Un loup féroce.</description>
+        <posX>2</posX>
+        <posY>0</posY>
+        <posZ>14</posZ>
+
+        <atk>1</atk>
         <def>5</def>
         <life>3</life>
         <type>Wolf</type>
@@ -26,9 +46,9 @@
         <id>2</id>
         <name>Wolf2</name>
         <description>Un 2e orc velu.</description>
-        <posX>12</posX>
+        <posX>10</posX>
         <posY>0</posY>
-        <posZ>24</posZ>
+        <posZ>22</posZ>
 
         <atk>10</atk>
         <def>5</def>

@@ -2,6 +2,9 @@
 
 Player::Player() {
     this->camera = new Camera();
+    atk = 5;
+    def = 5;
+    life = 10;
 }
 
 Player::Player(int id, const std::string &name, const glm::vec3 &position, const std::string &description) : Entity(

@@ -5,8 +5,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "monster.h"
-#include "treasure.h"
+#include "Monster.h"
+#include "Treasure.h"
 #include "Map.h"
 #include "Player.h"
 #include "Model3dtext.h"

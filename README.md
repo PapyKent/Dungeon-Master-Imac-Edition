@@ -15,6 +15,9 @@ SPACEBAR to hit ennemies or to open chest.
 
 LINUX
 in CMakeLists.txt change :
-  set(LIB_LIST glimac -lmingw32 -lSDLmain -lSDL  -lfreeglut -lglew32s -lopengl32  )
+
+set(LIB_LIST glimac -lmingw32 -lSDLmain -lSDL  -lfreeglut -lglew32s -lopengl32  )
+
 into :
-  set(LIB_LIST glimac -lSDL  -lglut -lGLEW -lGL  )
+
+set(LIB_LIST glimac -lSDL  -lglut -lGLEW -lGL  )

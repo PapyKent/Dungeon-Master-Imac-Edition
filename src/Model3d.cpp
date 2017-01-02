@@ -160,13 +160,13 @@ void Model3d::draw(glm::mat4 viewMatrix, glm::vec3 posPlayer) {
     //glUniform3f(uKs,this->geometry.material.m_Ks.x,this->geometry.material.m_Ks.y,this->geometry.material.m_Ks.z);//coeff reflec glossi
     //glUniform1f(uShininess,this->geometry.material.m_Shininess);//exposant de brillance
 
-    glUniform3f(uKd, 1, 1, 1);//coeff reflec obj
-    glUniform3f(uKs, 1, 1, 1);//coeff reflec glossi
-    glUniform1f(uShininess, 0.2);//exposant de brillance
+    glUniform3f(uKd, 0.5, 0.5, 0.5);//coeff reflec obj
+    glUniform3f(uKs, 0.5, 0.5, 0.5);//coeff reflec glossi
+    glUniform1f(uShininess, 0.1);//exposant de brillance
 
 
     glUniform3f(uLightPos_vs, posPlayer.x, posPlayer.y + 2, posPlayer.z);
-    glUniform3f(uLightIntensity, 2.5, 2.5, 2.6);
+    glUniform3f(uLightIntensity, 3.5, 3.5, 3.6);
 
 
     glBindTexture(GL_TEXTURE_2D, textureID);

@@ -154,6 +154,9 @@ bool GameManager::eventManager(SDL_Event &event) {
         default:
             break;
     }
+
+    checkTreasure(pas, atk);
+
     isFighting = checkFight(pas, atk);
     if (player->life <= 0) {
         player->life = 10;
@@ -307,6 +310,20 @@ bool GameManager::checkFight(float pas, bool atk) {
     return false;
 }
 
+
+bool GameManager::checkTreasure(float pas, bool action) {
+    for (int i = 0; i < this->treasureList.size(); i++) {
+        Treasure *treasure = &this->treasureList[i];
+        if (glm::distance(this->player->getPosition(), treasure->getPosition()) < pas * 2) {
+            if (action)
+                getTreasure(treasure);
+            return true;
+        }
+    }
+
+    return false;
+}
+
 void GameManager::fight(Monster *monster) {
     //hit
     monster->setLife(monster->getLife() - 1);
@@ -315,6 +332,11 @@ void GameManager::fight(Monster *monster) {
         this->player->life -= 2;
     else
         removeMonster(monster->getId());
+}
+
+void GameManager::getTreasure(Treasure *treasure) {
+    this->player->life += 5;
+    removeTreasure(treasure->getId());
 }
 
 

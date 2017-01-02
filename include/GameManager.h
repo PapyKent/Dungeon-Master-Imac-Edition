@@ -71,6 +71,10 @@ public:
 
     void fight( Monster *monster);
 
+    bool checkTreasure(float pas, bool action);
+
+    void getTreasure(Treasure *treasure);
+
 };
 
 

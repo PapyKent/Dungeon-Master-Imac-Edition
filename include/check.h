@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <stdexcept>
 #include "tinyxml2.h"
 #include "error.h"
 
